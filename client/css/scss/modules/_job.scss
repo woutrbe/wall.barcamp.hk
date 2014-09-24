@@ -1,0 +1,115 @@
+.job {
+	position: relative;
+	box-sizing: border-box;
+
+	width: 250px;
+	height: auto;
+
+	margin: 0 0 27px 20px;
+
+	color: rgb(68, 68, 68);
+	font-size: 13px;
+
+	border: 1px solid rgb(154, 154, 154);
+
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+
+	&:hover {
+		.job__toolbar {
+			display: block;
+		}
+	}
+}
+	.job__inner {
+		border-top: 2px solid rgba(255, 255, 255, 0.7);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+		padding: 45px 25px 20px 25px;
+	}
+	.job__body {
+
+	}
+	.job__date {
+		font-size: 11px;
+		color: rgb(68, 68, 68);
+		margin: 50px 0 0 0;
+		display: block;
+	}
+	.job__toolbar {
+		display: none;
+
+		position: absolute;
+		top: 0px;
+		left: 0px;
+
+		height: 32px;
+		width: 100%;
+
+		background-color: rgba(0, 0, 0, 0.2);
+
+		ul, li {
+			list-style: none;
+
+			margin: 0;
+			padding: 0;
+		}
+
+		ul {
+
+			text-align: center;
+		}
+
+		li {
+			width: 25px;
+			text-align: center;
+			display: inline-block;
+
+			padding-top: 9px;
+			margin: 0 10px;
+		}
+
+		a {
+			color: #333;
+			font-size: 16px;
+
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+
+	// Different post types
+	.job--hiring {
+		background-color: $job-hiring;
+
+		&:hover {
+			background-color: lighten($job-hiring, $lighten-hover);
+		}
+	}
+	.job--looking-for-a-job {
+		background-color: $job-looking-for-a-job;
+
+		&:hover {
+			background-color: lighten($job-looking-for-a-job, $lighten-hover);
+		}
+	}
+	.job--investors-seeking-startups {
+		background-color: $job-investors-seeking-startups;
+
+		&:hover {
+			background-color: lighten($job-investors-seeking-startups, $lighten-hover);
+		}
+	}
+	.job--startups-seeking-investors {
+		background-color: $job-startups-seeking-investors;
+
+		&:hover {
+			background-color: lighten($job-startups-seeking-investors, $lighten-hover);
+		}
+	}
+	.job--everything-else {
+		background-color: $job-everything-else;
+
+		&:hover {
+			background-color: lighten($job-everything-else, $lighten-hover);
+		}
+	}

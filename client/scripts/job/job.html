@@ -1,0 +1,16 @@
+<div class="job {{ job.type }}">
+	<div class="job__toolbar">
+		<ul>
+			<li><a ng-click="jobCtrl.shareEmail()" href="#" title=""><i class="fa fa-envelope"></i></a></li>
+			<li><a ng-click="jobCtrl.shareTwitter()" href="#" title=""><i class="fa fa-twitter"></i></a></li>
+			<li><a ng-click="jobCtrl.trash()" href="#" title=""><i class="fa fa-trash-o"></i></a></li>
+			<li><a ng-click="jobCtrl.flag()" href="#" title=""><i class="fa fa-flag"></i></a></li>
+		</ul>
+	</div>
+
+	<div class="job__inner">
+		{{ job.body }}
+
+		<span class="job__date">{{ job.date }}</span>
+	</div>
+</div>

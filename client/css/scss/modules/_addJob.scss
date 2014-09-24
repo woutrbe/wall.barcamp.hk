@@ -1,0 +1,25 @@
+.addJob {
+	display: block;
+	width: 132px;
+	height: 132px;
+
+	position: fixed;
+	top: 35px;
+	right: 35px;
+
+	z-index: 100;
+	cursor: pointer;
+
+	background: url('../img/addJob.png') center center no-repeat;
+	background-size: 110px 110px;
+
+	-webkit-transition: background-size 0.2s ease-in-out;
+	   -moz-transition: background-size 0.2s ease-in-out;
+	     -o-transition: background-size 0.2s ease-in-out;
+	        transition: background-size 0.2s ease-in-out;
+
+	&:hover {
+		background-size: 132px 132px;
+		background: url('../img/addJob_hover.png') center center no-repeat;
+	}
+}

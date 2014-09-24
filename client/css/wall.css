@@ -1,0 +1,97 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-image: url('../img/tiledBg_small.png'); }
+
+.job {
+  position: relative;
+  box-sizing: border-box;
+  width: 250px;
+  height: auto;
+  margin: 0 0 27px 20px;
+  color: #444444;
+  font-size: 13px;
+  border: 1px solid #9a9a9a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
+  .job:hover .job__toolbar {
+    display: block; }
+
+.job__inner {
+  border-top: 2px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+  padding: 45px 25px 20px 25px; }
+
+.job__date {
+  font-size: 11px;
+  color: #444444;
+  margin: 50px 0 0 0;
+  display: block; }
+
+.job__toolbar {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 32px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2); }
+  .job__toolbar ul, .job__toolbar li {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  .job__toolbar ul {
+    text-align: center; }
+  .job__toolbar li {
+    width: 25px;
+    text-align: center;
+    display: inline-block;
+    padding-top: 9px;
+    margin: 0 10px; }
+  .job__toolbar a {
+    color: #333;
+    font-size: 16px; }
+    .job__toolbar a:hover {
+      color: #fff; }
+
+.job--hiring {
+  background-color: #f4e13d; }
+  .job--hiring:hover {
+    background-color: #f8eb85; }
+
+.job--looking-for-a-job {
+  background-color: #bdd929; }
+  .job--looking-for-a-job:hover {
+    background-color: #d2e56a; }
+
+.job--investors-seeking-startups {
+  background-color: #ffac4f; }
+  .job--investors-seeking-startups:hover {
+    background-color: #ffcf9b; }
+
+.job--startups-seeking-investors {
+  background-color: #cd80c2; }
+  .job--startups-seeking-investors:hover {
+    background-color: #e3b7dd; }
+
+.job--everything-else {
+  background-color: #6bd0e5; }
+  .job--everything-else:hover {
+    background-color: #ace5f0; }
+
+.addJob {
+  display: block;
+  width: 132px;
+  height: 132px;
+  position: fixed;
+  top: 35px;
+  right: 35px;
+  z-index: 100;
+  cursor: pointer;
+  background: url('../img/addJob.png') center center no-repeat;
+  background-size: 110px 110px;
+  -webkit-transition: background-size 0.2s ease-in-out;
+  -moz-transition: background-size 0.2s ease-in-out;
+  -o-transition: background-size 0.2s ease-in-out;
+  transition: background-size 0.2s ease-in-out; }
+  .addJob:hover {
+    background-size: 132px 132px;
+    background: url('../img/addJob_hover.png') center center no-repeat; }

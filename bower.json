@@ -1,0 +1,11 @@
+{
+  "name": "wall.barcamp.hk",
+  "homepage": "http://wall.barcamp.hk",
+  "dependencies": {
+    "angular": "1.2.25",
+    "angular-route": ""
+  },
+  "devDependencies": {
+    "oauth-js": "~0.2.4"
+  }
+}
