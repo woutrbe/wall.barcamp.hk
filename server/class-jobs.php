@@ -18,17 +18,12 @@ class Jobs {
 		return 0;
 	}
 	
-	public static function getCats($admin = 0) {
+	public static function getCats() {
 		$db = Database::getDB();
 		
 		$cats = array();
 		
-		$sql = "SELECT id, link, color, length FROM cats ";
-		
-		$sql .= ($admin == 1 ? "WHERE admin = 0 OR admin = 1 " : "WHERE admin = 0 ");
-		//if($admin == 1) $sql .= "WHERE admin = 1 ";
-		
-		$sql .= "ORDER BY sort ASC";
+		$sql = "SELECT id, link, color, length, admin FROM cats ORDER BY sort ASC";
 		
 		if($result = $db->query($sql)) {
 			while($row = $result->fetch_object()) {
@@ -64,7 +59,7 @@ class Jobs {
 		$db = Database::getDB();
 		$jobs = array();
 		
-		$sql = "SELECT SQL_CALC_FOUND_ROWS jobs.id, jobs.content, jobs.timestamp, jobs.link, jobs.catID, cats.color, cats.link ";
+		$sql = "SELECT SQL_CALC_FOUND_ROWS jobs.id, jobs.content, jobs.timestamp, jobs.link, jobs.catID ";
 		$sql .= "FROM jobs ";
 		$sql .= "INNER JOIN cats ON jobs.catID = cats.id ";
 		
@@ -85,15 +80,17 @@ class Jobs {
 			
 			$stm->bind_param('ii', $from, self::$limit);
 			if($stm->execute()) {
-				$stm->bind_result($jobID, $content, $timestamp, $jobLink, $catID, $color, $link);
+				$stm->bind_result($jobID, $content, $timestamp, $jobLink, $catID);
 				
 				$content = $content;
 				
 				while($stm->fetch()) {
 					$stm->store_result();
+
+					$content = html_entity_decode(self::formatContent(str_replace('&amp;nbsp;', ' ', stripslashes($content))));
 					
-					$job = array('jobID' => $jobID, 'content' => $content, 'timestamp' => $timestamp, 'jobLink' => $jobLink, 'catID' => $catID, 'color' => $color, "link" => $link);
-					$job = self::createJobView($job);
+					$job = array('jobID' => $jobID, 'content' => $content, 'timestamp' => $timestamp, 'jobLink' => $jobLink, 'catID' => $catID);
+					// $job = self::createJobView($job);
 					
 					array_push($jobs, $job);
 				}
@@ -379,164 +376,6 @@ class Jobs {
 		}
 		
 		return false;
-	}
-	
-	/**
-	 * Create a new job view
-	 *
-	 * @param $job Job array
-	 */
-	public static function createJobView($job, $editable = false, $single = false) {
-		if($job == null) {
-			$job = array('link' => '', 'color' => '244, 225, 61');
-		}
-		
-		$class = strtolower(str_replace(" ", "-", $job['link']));
-		
-		$jobClass = '';
-		$mailLink = '';
-		$tweetLink = '';
-		
-		if(isset($job['jobID'])) {
-			$jobClass = 'data-job=' . $job['jobID'];
-			
-			$mailContent = stripslashes(str_replace('<br />', ' ', nl2br(html_entity_decode(preg_replace('#\*([^\s\*]([^\*]*[^\s\*])?)\*#is', '$1', str_replace('&amp;nbsp;', ' ', preg_replace('#\[img\](.*?)\[/img\]#is', '', trim($job['content']))))))));
-			
-			$mailLink = 'mailto:?body=http://wall.barcamp.hk/jobs/' . $job['jobLink'];
-			$tweetLink = 'http://twitter.com/home?status=' . substr($mailContent, 0, 110) . '... - http://wall.barcamp.hk/jobs/' . $job['jobLink'];
-		}
-		
-		$removeAble = '';
-		if(isset($job['jobID']) && self::checkOwnerShip($job['jobID']) && isset($_SESSION['nextAction']) && $_SESSION['nextAction'] == 'removeJob' && $_SESSION['jobID'] == $job['jobID']) {
-			$removeAble = 'removeAble';
-		}
-		
-		$editableClass = '';
-		if($editable) $editableClass = 'editable';
-		
-		$timestamp = time();
-		if(isset($job['timestamp'])) $timestamp = $job['timestamp'];
-		
-		$maxLength = '';
-		if($editable) {
-			if($_SESSION['user']['owner'] == 1) {
-				$maxLength = 'data-max="9999"';
-			} else {
-				$maxLength = 'data-max="' . $job['max'] . '"';
-			}
-		}
-		
-		$div = '<div class="job ' . $class . ' ' . $removeAble . ' ' . $editableClass . '" ' . $jobClass . ' ' . $maxLength . '>';
-		
-			// replace background images
-			$backgroundSize = '';
-			if(preg_match('#\[img\](.*?)\[/img\]#is', $job['content'], $matches)) {		
-				if($single == true) $backgroundSize = '; background-size: 100%';
-						
-				$background = 'background: rgb(' . $job['color'] . ') url(' . $matches[1] . ') no-repeat right bottom';
-				
-				$job['content'] = preg_replace('#\[img\](.*?)\[/img\]#is', '', $job['content']);
-			} else {
-				$background = 'background-color: rgb(' . $job['color'] . ')';
-			}
-			
-			$div .= '<div class="border">';
-				$div .= '<div class="inner" style="' . $background . $backgroundSize . '">';
-					if($editable) {
-						$cats = self::getCats($_SESSION['user']['owner']);
-						
-						$div .= '<select name="cat">';
-							foreach($cats as $cat) {
-								if($job['color'] == $cat->color) {
-									$div .= '<option value="' . $cat->id . '" data-color="' . $cat->color . '" selected="selected">' . $cat->link . '</option>';
-								} else {
-									$div .= '<option value="' . $cat->id . '" data-color="' . $cat->color . '">' . $cat->link . '</option>';
-								}
-							}
-						$div .= '</select>';
-					}
-					
-					$div .= '<div class="content">';
-						$div .= '<p>' . html_entity_decode(self::formatContent(str_replace('&amp;nbsp;', ' ', stripslashes($job['content'])))) . '</p>'; 
-					$div .= '</div>';
-					
-					$div .= '<span class="postedOn">Posted on ' . date('M d', $timestamp) . ' at ' . date('h:i', $timestamp) . '</span>';
-				
-					if($editable) {
-						$div .= '<span class="charsRemaining">250 characters remaining</span>';
-						
-						$div .= '<a href="#" class="save">create post</a> ';
-						$div .= '<a href="#" class="cancel">cancel</a>';
-						$div .= '<br />';
-						
-						$div .= '<a href="#" class="formatTips">?</a>';
-						$div .= '<div class="clear">&nbsp;</div>';
-						
-						$div .= '<div class="formatDiv">';
-							$div .= 'FORMATTING TIPS" <br /><br />';
-							$div .= 'Type *bold* to get -> <strong>bold</strong> <br />';
-							$div .= 'Type _underline_ to get -> <u>underline</u> <br />';
-							$div .= 'Type +italic+ to get -> <i>italic</i> <br /><br />';
-							$div .= 'Any email address and URLs entered will automatically be made clickable';
-						$div .= '</div>';
-					}					
-				$div .= '</div>';
-				
-				$div .= '<div class="removeContainer">';
-					$div .= '<div class="removeInner">';
-						$div .= '<p>Are you sure you want to remove this post?</p>';
-						$div .= '<a href="#" class="removeConfirm">remove post</a> ';
-						$div .= '<a href="#" class="removeCancel">cancel</a>';
-					$div .= '</div>';
-				$div .= '</div>';
-				
-				$div .= '<div class="hover">';
-					$div .= '<a href="' . $mailLink . '" title="Mail this job" class="icon mail"></a>';
-					$div .= '<a href="' . $tweetLink . '" title="Tweet this job" class="icon tweet" target="_blank"></a>';
-					$div .= '<a href="#" title="Delete this job" class="icon delete"></a>';
-					
-					if(isset($job['jobID']) && self::checkIfFlagged($job['jobID'])) {
-						$div .= '<a href="#" title="This post has been flagged as inapropriate" class="icon flagged"></a>';
-					} else {
-						$div .= '<a href="#" title="Flag as inappropriate" class="icon flag"></a>';
-					}
-				$div .= '</div>';
-			$div .= '</div>';
-		$div .= '</div>';		
-		
-		return $div;
-	}
-	
-	
-	public static function shortenURL($url) {
-		$key = 'R_8a34772422694afad928d1de8f84d5d3';
-		$bitly = 'http://api.bit.ly/v3/shorten?login=o_2u94sccfq0&apiKey=' . $key . '&uri=' . urlencode($url) . '&format=txt';
-		
-		$ch = curl_init();
-		$timeout = 5;
-		curl_setopt($ch,CURLOPT_URL, $bitly);
-		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-		curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-		$data = curl_exec($ch);
-		curl_close($ch);
-		
-		return $data;		  
-	}
-	public static function longerUrl($url) {
-		$key = 'R_8a34772422694afad928d1de8f84d5d3';
-		$bitly = 'http://api.bitly.com/v3/expand?login=o_2u94sccfq0&shortUrl=' . urlencode($url) . '&apiKey=' . $key . '&format=txt';
-		
-		$ch = curl_init();
-		$timeout = 5;
-		curl_setopt($ch,CURLOPT_URL, $bitly);
-		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-		curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-		$data = curl_exec($ch);
-		curl_close($ch);
-		
-		//<a href="$1" target="_blank">$1</a>
-		
-		return $data;	
 	}
 	/**
 	 * Format content

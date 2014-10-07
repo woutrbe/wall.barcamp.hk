@@ -20,11 +20,13 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.9);
   padding: 45px 25px 20px 25px; }
 
-.job__date {
+.job__chars, .job__date {
   font-size: 11px;
   color: #444444;
-  margin: 50px 0 0 0;
   display: block; }
+
+.job__date {
+  margin: 50px 0 0 0; }
 
 .job__toolbar {
   display: none;
@@ -76,6 +78,11 @@ body {
   background-color: #6bd0e5; }
   .job--everything-else:hover {
     background-color: #ace5f0; }
+
+.job--admin-notice {
+  background-color: #f25a95; }
+  .job--admin-notice:hover {
+    background-color: #f8a1c4; }
 
 .addJob {
   display: block;

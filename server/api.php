@@ -8,6 +8,9 @@ if(isset($_GET['ajax'])) {
 		case 'getCats':
 			echo json_encode(Jobs::getCats());
 			break;
+		case 'getJobs':
+			echo json_encode(Jobs::getJobs($_GET['page']));
+			break;
 		case 'createJob':
 			$cats = Jobs::getCats();
 			

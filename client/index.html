@@ -14,17 +14,23 @@
 		<menu></menu>
 
 		<div class="jobs" ng-controller="JobsController as jobsCtrl">
-			<job ng-repeat="job in jobsCtrl.jobs"></job>
+			<job ng-repeat="job in jobsCtrl.jobs" job="job"></job>
 		</div>
 
 		<script type="text/javascript" src="scripts/libs/angular/angular.js"></script>
 		<script type="text/javascript" src="scripts/libs/angular-route/angular-route.js"></script>
 		<script type="text/javascript" src="scripts/libs/oauth-js/dist/oauth.min.js"></script>
+		<script type="text/javascript" src="scripts/libs/date.js"></script>
+		<script type="text/javascript" src="scripts/libs/underscore-min.js"></script>
+
 		<script type="text/javascript" src="scripts/app.js"></script>
 		<script type="text/javascript" src="scripts/job/job.js"></script>
 		<script type="text/javascript" src="scripts/login/login.js"></script>
 		<script type="text/javascript" src="scripts/menu/menu.js"></script>
+		<script type="text/javascript" src="scripts/menu-select/menu-select.js"></script>
+
 		<script type="text/javascript" src="scripts/controllers/jobsController.js"></script>
+		<script type="text/javascript" src="scripts/controllers/addJobController.js"></script>
 
 		<script type="text/javascript" src="scripts/services/data.js"></script>
 	</body>

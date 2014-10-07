@@ -28,12 +28,20 @@
 	.job__body {
 
 	}
+
+	.job__chars,
 	.job__date {
 		font-size: 11px;
 		color: rgb(68, 68, 68);
-		margin: 50px 0 0 0;
 		display: block;
 	}
+	.job__date {
+		margin: 50px 0 0 0;
+	}
+	.job__chars {
+		margin: 0px 0px 15px 0px;
+	}
+	
 	.job__toolbar {
 		display: none;
 
@@ -111,5 +119,12 @@
 
 		&:hover {
 			background-color: lighten($job-everything-else, $lighten-hover);
+		}
+	}
+	.job--admin-notice {
+		background-color: $job-admin-notice;
+
+		&:hover {
+			background-color: lighten($job-admin-notice, $lighten-hover);
 		}
 	}

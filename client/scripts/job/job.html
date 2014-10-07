@@ -1,16 +1,24 @@
-<div class="job {{ job.type }}">
-	<div class="job__toolbar">
+<div class="job {{ type }}">
+	<div class="job__toolbar" ng-show="!editable">
 		<ul>
-			<li><a ng-click="jobCtrl.shareEmail()" href="#" title=""><i class="fa fa-envelope"></i></a></li>
-			<li><a ng-click="jobCtrl.shareTwitter()" href="#" title=""><i class="fa fa-twitter"></i></a></li>
-			<li><a ng-click="jobCtrl.trash()" href="#" title=""><i class="fa fa-trash-o"></i></a></li>
-			<li><a ng-click="jobCtrl.flag()" href="#" title=""><i class="fa fa-flag"></i></a></li>
+			<li><a ng-click="shareEmail()" href="#" title=""><i class="fa fa-envelope"></i></a></li>
+			<li><a ng-click="shareTwitter()" href="#" title=""><i class="fa fa-twitter"></i></a></li>
+			<li><a ng-click="trash()" href="#" title=""><i class="fa fa-trash-o"></i></a></li>
+			<li><a ng-click="flag()" href="#" title=""><i class="fa fa-flag"></i></a></li>
 		</ul>
 	</div>
 
 	<div class="job__inner">
-		{{ job.body }}
+		<div ng-show="editable">
+			<menu-select selected-menu="selectedMenu"></menu-select>
 
-		<span class="job__date">{{ job.date }}</span>
+			<span class="job__chars">{{ charLeft }} characters remaining</span>
+		</div>
+		<div ng-show="!editable">
+			{{ content }}
+
+			<span class="job__date">Posted on {{ timestamp | date : "MMM d 'at' HH:mm" }}</span>
+		</div>
+		<div ng-show="removeable">blah blah remove</div>
 	</div>
 </div>

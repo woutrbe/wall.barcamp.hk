@@ -16,8 +16,6 @@
 
 				dataService.getMenu().then(function(data) {
 					$scope.links = $scope.links.concat(data);
-
-					console.log($scope.links);
 				})
 
 				$scope.sort = function(sortBy) {
