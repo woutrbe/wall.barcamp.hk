@@ -9,6 +9,7 @@
 
 		// Listen to the wall.newJob event to create a new job
 		$rootScope.$on('wall.newJob', function() {
+			// 1. Create an empty job
 			var newJob = {
 				catID: 0,
 				content: 'test',
@@ -18,13 +19,13 @@
 				removeable: false
 			}
 
+			// 2. Add the new job to our array of jobs
 			$scope.jobs.unshift(newJob);
 		})
 
 		// Listen to the wall.removeJob event
 		$rootScope.$on('wall.removeJob', function(event, job) {
-			console.log($scope.jobs.indexOf(job));
-
+			// 1. Return a new jobs array without the given job
 			$scope.jobs = _.without($scope.jobs, job);
 		})
 

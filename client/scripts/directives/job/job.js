@@ -53,7 +53,7 @@
 
 				// Create a new post
 				$scope.createPost = function() {
-					window.alert('create post');
+					console.log($scope.jobInput);
 				}
 
 				// Cancel creating a new post

@@ -2,9 +2,9 @@
 	// Add a new job
 	var app = angular.module('wall.addJobModule', []);
 	app.controller('AddJobController', function($scope, $rootScope) {
-		console.log('AddJobController');
-
 		$scope.addNewJob = function() {
+			// Emit a "wall.newJob" event
+			// This will be caught in jobsController
 			$rootScope.$emit('wall.newJob');
 		}
 
