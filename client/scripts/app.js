@@ -6,7 +6,8 @@
 			'wall.jobsDetailModule',
 			'wall.menuModule',
 			'wall.addJobModule',
-			'wall.menuSelectModule'
+			'wall.menuSelectModule',
+			'wall.notFound'
 		]);
 	app.run(function() {
 		// Initialize oAuth

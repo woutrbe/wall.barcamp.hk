@@ -15,6 +15,10 @@
 				template: '',
 				controller: 'AddJobController'
 			})
+			.when('/404', {
+				templateUrl: 'partials/jobs-detail.html',
+				controller: 'NotFoundController'
+			})
 			.otherwise({
 				redirectTo: '/'
 			})
