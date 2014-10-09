@@ -1,8 +1,9 @@
 (function() {
 	var app = angular.module('wall', [
-			'ngRoute',
+			'wall.routes',
 			'jobModule',
 			'jobsModule',
+			'wall.jobsDetailModule',
 			'menuModule',
 			'addJobModule',
 			'menuSelectModule',

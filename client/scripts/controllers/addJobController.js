@@ -2,8 +2,12 @@
 	// Add a new job
 	var app = angular.module('addJobModule', []);
 	app.controller('AddJobController', function($scope, $rootScope) {
-		this.addNewJob = function() {
+		console.log('AddJobController');
+
+		$scope.addNewJob = function() {
 			$rootScope.$emit('wall.newJob');
 		}
+
+		return $scope;
 	})
 })();

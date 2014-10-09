@@ -8,14 +8,12 @@
 		<link type="text/css" rel="stylesheet" href="css/wall.css">
 	</head>
 
-	<body ng-controller="WallController as wallCtrl">
-		<a class="addJob" ng-click="addJobCtrl.addNewJob()" ng-controller="AddJobController as addJobCtrl"></a>
+	<body>
+		<a class="addJob" ng-click="addNewJob()" ng-controller="AddJobController"></a>
 
 		<menu></menu>
 
-		<div class="jobs" ng-controller="JobsController as jobsCtrl">
-			<job ng-repeat="job in jobsCtrl.jobs" job="job"></job>
-		</div>
+		<div ng-view></div>
 
 		<script type="text/javascript" src="scripts/libs/angular/angular.js"></script>
 		<script type="text/javascript" src="scripts/libs/angular-route/angular-route.js"></script>
@@ -24,6 +22,7 @@
 		<script type="text/javascript" src="scripts/libs/underscore-min.js"></script>
 
 		<script type="text/javascript" src="scripts/app.js"></script>
+		<script type="text/javascript" src="scripts/routes.js"></script>
 
 		<script type="text/javascript" src="scripts/directives/job/job.js"></script>
 		<script type="text/javascript" src="scripts/directives/login/login.js"></script>
@@ -31,6 +30,7 @@
 		<script type="text/javascript" src="scripts/directives/menu-select/menu-select.js"></script>
 
 		<script type="text/javascript" src="scripts/controllers/jobsController.js"></script>
+		<script type="text/javascript" src="scripts/controllers/jobsDetailController.js"></script>
 		<script type="text/javascript" src="scripts/controllers/addJobController.js"></script>
 
 		<script type="text/javascript" src="scripts/services/data.js"></script>
