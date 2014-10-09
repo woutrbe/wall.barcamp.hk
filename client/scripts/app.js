@@ -1,13 +1,12 @@
 (function() {
 	var app = angular.module('wall', [
 			'wall.routes',
-			'jobModule',
-			'jobsModule',
+			'wall.jobModule',
+			'wall.jobsModule',
 			'wall.jobsDetailModule',
-			'menuModule',
-			'addJobModule',
-			'menuSelectModule',
-			'dataService'
+			'wall.menuModule',
+			'wall.addJobModule',
+			'wall.menuSelectModule'
 		]);
 	app.run(function() {
 		// Initialize oAuth

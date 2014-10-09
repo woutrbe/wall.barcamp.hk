@@ -1,6 +1,6 @@
 (function() {
 	// Job directive
-	var app = angular.module('jobModule', []);
+	var app = angular.module('wall.jobModule', []);
 	app.directive('job', ['$sce', function($sce) {
 		return {
 			restrict: 'E',

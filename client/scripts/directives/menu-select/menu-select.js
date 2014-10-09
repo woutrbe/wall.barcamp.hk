@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('menuSelectModule', ['dataService']);
+	var app = angular.module('wall.menuSelectModule', ['wall.dataService']);
 	app.directive('menuSelect', ['dataService', function(dataService) {
 		return {
 			restrict: 'E',

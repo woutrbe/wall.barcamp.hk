@@ -1,6 +1,6 @@
 (function() {
 	// Menu directive
-	var app = angular.module('menuModule', ['dataService']);
+	var app = angular.module('wall.menuModule', ['wall.dataService']);
 	app.directive('menu', ['dataService', function(dataService) {
 		return {
 			restrict: 'E',

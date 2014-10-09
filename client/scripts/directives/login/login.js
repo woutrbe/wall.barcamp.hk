@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('login', []);
+	var app = angular.module('wall.loginModule', []);
 	app.directive('login', function() {
 		return {
 			restrict: 'E',

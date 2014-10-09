@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('dataService', []);
+	var app = angular.module('wall.dataService', []);
 	app.factory('dataService', ['$http', '$q', function($http, $q) {
 		var links = [],
 			jobs = [],
