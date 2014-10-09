@@ -13,6 +13,11 @@ gulp.task('watch', function() {
 	gulp.watch('./client/css/scss/**/*.scss', ['sass']);
 })
 
+// Build app for production
+gulp.task('build', function() {
+
+})
+
 // SASS
 gulp.task('sass', function() {
 	gulp.src('./client/css/scss/wall.scss')

@@ -7,6 +7,7 @@
 			$scope.matchJobWithMenu(jobs);
 		})
 
+		// Listen to the wall.newJob event to create a new job
 		$rootScope.$on('wall.newJob', function() {
 			var newJob = {
 				catID: 0,
@@ -18,6 +19,11 @@
 			}
 
 			$scope.jobs.unshift(newJob);
+		})
+
+		// Listen to the wall.removeJob event
+		$rootScope.$on('wall.removeJob', function(job) {
+			console.log(job);
 		})
 
 		// Match our jobs with the corresponding menu item

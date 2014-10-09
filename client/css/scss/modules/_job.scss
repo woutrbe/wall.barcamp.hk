@@ -19,6 +19,19 @@
 			display: block;
 		}
 	}
+
+	a {
+		color: rgb(68, 68, 68);
+	}
+	strong {
+		font-weight: 700;
+	}
+	u {
+		text-decoration: underline;
+	}
+	i {
+		font-size: italic;
+	}
 }
 	.job__inner {
 		border-top: 2px solid rgba(255, 255, 255, 0.7);
@@ -28,6 +41,33 @@
 	.job__body {
 
 	}
+
+	.job__post-options {
+
+	}
+		.job__create-btn {
+			font-size: 11px;
+			text-decoration: none;
+
+			padding: 5px 10px;
+			margin: 0 10px 0 0;
+			background-color: rgb(255, 255, 255);
+
+			border-bottom: 1px solid rgb(0, 0, 0);
+			border-right: 1px solid rgb(0, 0, 0);
+
+			&:hover {
+				color: rgb(0, 0, 0);
+			}
+		}
+		.job__cancel-btn {
+			font-size: 11px;
+			text-decoration: underline;
+
+			&:hover {
+				color: rgb(255, 255, 255);
+			}
+		}
 
 	.job__chars,
 	.job__date {
@@ -40,6 +80,57 @@
 	}
 	.job__chars {
 		margin: 0px 0px 15px 0px;
+	}
+	.job__input {
+		resize: none;
+		outline: none;
+
+		width: 100%;
+		margin: 20px 0;
+
+		border: none;
+		background: none;
+
+		font-family: "Courier New", Courier, monospace;
+		font-size: 13px;
+	}
+	.jobs__format-tip {
+		width: 10px;
+		height: 10px;
+
+		border-radius: 10px;
+		background-color: #fff;
+
+		margin: 20px -15px 0 0;
+		padding: 5px;
+		display: inline-block;
+
+		font-size: 13px;
+		line-height: 12px;
+		text-align: center;
+		text-decoration: none;
+
+		border-bottom: 1px solid rgb(0, 0, 0);
+		border-right: 1px solid rgb(0, 0, 0);
+		float: right;
+	}
+	.job__format-tips {
+		clear: both;
+
+		font-size: 11px;
+		line-height: 15px;
+		color: rgb(0, 0, 0);
+
+		opacity: 0;
+		height: 0;
+		overflow: hidden;
+
+		@include transition(opacity 1s ease-in-out);
+
+		&.expanded {
+			opacity: 1;
+			height: auto;
+		}
 	}
 	
 	.job__toolbar {

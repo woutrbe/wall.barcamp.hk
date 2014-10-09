@@ -1,4 +1,4 @@
-<div class="job {{ type }}">
+<div class="job {{ type }}" ng-class="{ready: !editable}">
 	<div class="job__toolbar" ng-show="!editable">
 		<ul>
 			<li><a ng-click="shareEmail()" href="#" title=""><i class="fa fa-envelope"></i></a></li>
@@ -11,8 +11,27 @@
 	<div class="job__inner">
 		<div ng-show="editable">
 			<menu-select selected-menu="selectedMenu"></menu-select>
+			<textarea class="job__input" cols="3" rows="3">Enter your post here</textarea>
 
 			<span class="job__chars">{{ charLeft }} characters remaining</span>
+
+			<div class="job__post-options">
+				<a href="#" class="job__create-btn" ng-click="createPost()">create post</a>
+				<a href="#" class="job__cancel-btn" ng-click="cancelPost()">cancel</a>
+			</div>
+
+			<a href="" class="jobs__format-tip" ng-mouseover="showTips()" ng-mouseout="hideTips()">?</a>
+			<div class="job__format-tips" ng-class="{expanded: expanded}">
+				FORMATTING TIPS
+				<br><br>
+				Type *bold* to get -> <strong>bold</strong>
+				<br>
+				Type _underline_ to get -> <u>underline</u>
+				<br>
+				Type +italic+ to get -> <i>italic</i>
+				<br><br>
+				Any email address and URLs entered will automatically be made clickable
+			</div>
 		</div>
 		<div ng-show="!editable">
 			{{ content }}

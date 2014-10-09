@@ -8,11 +8,12 @@
 			scope: {
 				job: '='
 			},
-			controller: function($scope) {
+			controller: function($scope, $rootScope) {
 				$scope.removeable = false;
 				$scope.editable = $scope.job.editable;
 
 				if($scope.job.editable) {
+					// Watch for changes in $scope.selectedMenu
 					$scope.$watch('selectedMenu', function(newValue, oldValue) {
 						if($scope.selectedMenu)	{
 							console.log($scope.selectedMenu);
@@ -25,25 +26,47 @@
 					$scope.type = 'job--' + $scope.job.cat.link.toLowerCase().replace(/ /g, '-');
 					$scope.content = $sce.trustAsHtml($scope.job.content);
 					$scope.timestamp = $scope.job.timestamp * 1000;
-
-					$scope.shareEmail = function() {
-						window.alert('email');
-					}
-					$scope.shareTwitter = function() {
-						window.alert('twitter');
-					}
-					$scope.trash = function() {
-						window.alert('trash');
-
-						$scope.removeable = true;
-					}
-					$scope.flag = function() {
-						window.alert('flag');
-					}
 				}
 
 				$scope.createEditableJob = function() {
 
+				}
+
+				// Share job via email
+				$scope.shareEmail = function() {
+					window.alert('email');
+				}
+				// Share job via twitter
+				$scope.shareTwitter = function() {
+					window.alert('twitter');
+				}
+				// Remove a job
+				$scope.trash = function() {
+					window.alert('trash');
+
+					$scope.removeable = true;
+				}
+				// Flag a job
+				$scope.flag = function() {
+					window.alert('flag');
+				}	
+
+				// Create a new post
+				$scope.createPost = function() {
+					window.alert('create post');
+				}
+
+				// Cancel creating a new post
+				$scope.cancelPost = function() {
+					$rootScope.$emit('wall.removeJob', $scope.job);
+				}
+
+				// Show / hide tooltip for jobs
+				$scope.showTips = function() {
+					$scope.expanded = true;
+				}
+				$scope.hideTips = function() {
+					$scope.expanded = false;
 				}
 
 				return $scope;
