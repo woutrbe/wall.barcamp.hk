@@ -66,6 +66,10 @@ body {
   background: none;
   font-family: "Courier New", Courier, monospace;
   font-size: 13px; }
+  .job__input:focus {
+    -webkit-transition: height 100ms ease-in-out;
+    -moz-transition: height 100ms ease-in-out;
+    transition: height 100ms ease-in-out; }
 
 .jobs__format-tip {
   width: 10px;
@@ -88,15 +92,13 @@ body {
   font-size: 11px;
   line-height: 15px;
   color: black;
-  opacity: 0;
-  height: 0;
+  max-height: 0px;
   overflow: hidden;
-  -webkit-transition: opacity 1s ease-in-out, '';
-  -moz-transition: opacity 1s ease-in-out, '';
-  transition: opacity 1s ease-in-out, ''; }
+  -webkit-transition: max-height 500ms ease-in-out;
+  -moz-transition: max-height 500ms ease-in-out;
+  transition: max-height 500ms ease-in-out; }
   .job__format-tips.expanded {
-    opacity: 1;
-    height: auto; }
+    max-height: 250px; }
 
 .job__toolbar {
   display: none;

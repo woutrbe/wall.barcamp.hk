@@ -1,6 +1,6 @@
 (function() {
 	// Job directive
-	var app = angular.module('wall.jobModule', []);
+	var app = angular.module('wall.jobModule', ['monospaced.elastic']);
 	app.directive('job', ['$sce', function($sce) {
 		return {
 			restrict: 'E',
@@ -13,6 +13,8 @@
 				$scope.editable = $scope.job.editable;
 
 				if($scope.job.editable) {
+					$scope.jobInput = 'Enter your post here';
+					
 					// Watch for changes in $scope.selectedMenu
 					$scope.$watch('selectedMenu', function(newValue, oldValue) {
 						if($scope.selectedMenu)	{

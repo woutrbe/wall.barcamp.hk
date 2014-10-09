@@ -6,6 +6,7 @@
     "angular-route": ""
   },
   "devDependencies": {
-    "oauth-js": "~0.2.4"
+    "oauth-js": "~0.2.4",
+    "angular-elastic": "~2.4.0"
   }
 }

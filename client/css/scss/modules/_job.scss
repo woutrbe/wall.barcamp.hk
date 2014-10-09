@@ -94,6 +94,10 @@
 
 		font-family: "Courier New", Courier, monospace;
 		font-size: 13px;
+
+		&:focus {
+			@include transition(height 100ms ease-in-out);
+		}
 	}
 	.jobs__format-tip {
 		width: 10px;
@@ -122,15 +126,13 @@
 		line-height: 15px;
 		color: rgb(0, 0, 0);
 
-		opacity: 0;
-		height: 0;
+		max-height: 0px;
 		overflow: hidden;
 
-		@include transition(opacity 1s ease-in-out);
+		@include transition(max-height 500ms ease-in-out);
 
 		&.expanded {
-			opacity: 1;
-			height: auto;
+			max-height: 250px;
 		}
 	}
 	

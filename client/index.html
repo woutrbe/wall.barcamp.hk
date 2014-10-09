@@ -11,7 +11,9 @@
 	<body>
 		<a class="addJob" ng-click="addNewJob()" ng-controller="AddJobController"></a>
 
-		<menu></menu>
+		<div class="sidebar">
+			<menu></menu>
+		</div>
 
 		<div ng-view></div>
 
@@ -20,6 +22,7 @@
 		<script type="text/javascript" src="scripts/libs/oauth-js/dist/oauth.min.js"></script>
 		<script type="text/javascript" src="scripts/libs/date.js"></script>
 		<script type="text/javascript" src="scripts/libs/underscore-min.js"></script>
+		<script type="text/javascript" src="scripts/libs/angular-elastic/elastic.js"></script>
 
 		<script type="text/javascript" src="scripts/app.js"></script>
 		<script type="text/javascript" src="scripts/routes.js"></script>

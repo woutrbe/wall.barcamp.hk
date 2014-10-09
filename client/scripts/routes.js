@@ -20,7 +20,7 @@
 				controller: 'NotFoundController'
 			})
 			.otherwise({
-				redirectTo: '/'
+				redirectTo: '/404'
 			})
 	})
 })();
