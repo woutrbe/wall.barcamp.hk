@@ -4,7 +4,7 @@
 	app.directive('job', ['$sce', function($sce) {
 		return {
 			restrict: 'E',
-			templateUrl: 'scripts/job/job.html',
+			templateUrl: 'scripts/directives/job/job.html',
 			scope: {
 				job: '='
 			},

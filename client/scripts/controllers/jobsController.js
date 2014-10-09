@@ -22,8 +22,10 @@
 		})
 
 		// Listen to the wall.removeJob event
-		$rootScope.$on('wall.removeJob', function(job) {
-			console.log(job);
+		$rootScope.$on('wall.removeJob', function(event, job) {
+			console.log($scope.jobs.indexOf(job));
+
+			$scope.jobs = _.without($scope.jobs, job);
 		})
 
 		// Match our jobs with the corresponding menu item

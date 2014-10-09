@@ -3,7 +3,7 @@
 	app.directive('menuSelect', ['dataService', function(dataService) {
 		return {
 			restrict: 'E',
-			templateUrl: 'scripts/menu-select/menu-select.html',
+			templateUrl: 'scripts/directives/menu-select/menu-select.html',
 			scope: {
 				selected: '=selectedMenu'
 			},

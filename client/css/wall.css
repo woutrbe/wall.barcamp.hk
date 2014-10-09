@@ -15,6 +15,7 @@ body {
   .job:hover .job__toolbar {
     display: block; }
   .job a {
+    cursor: pointer;
     color: #444444; }
   .job strong {
     font-weight: 700; }

@@ -4,7 +4,7 @@
 	app.directive('menu', ['dataService', function(dataService) {
 		return {
 			restrict: 'E',
-			templateUrl: 'scripts/menu/menu.html',
+			templateUrl: 'scripts/directives/menu/menu.html',
 			controller: function($scope) {
 				$scope.links = [
 					{

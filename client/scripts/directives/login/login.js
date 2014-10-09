@@ -3,7 +3,7 @@
 	app.directive('login', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'scripts/login/login.html',
+			templateUrl: 'scripts/directives/login/login.html',
 			controller: function() {
 
 			},
