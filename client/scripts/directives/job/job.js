@@ -19,7 +19,7 @@
 							console.log($scope.selectedMenu);
 
 							$scope.type = 'job--' + $scope.selectedMenu.link.toLowerCase().replace(/ /g, '-');
-							$scope.charLeft = $scope.selectedMenu.length;
+							$scope.maxChars = $scope.selectedMenu.length;
 						}	
 					})
 				} else {
