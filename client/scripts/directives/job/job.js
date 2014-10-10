@@ -12,36 +12,47 @@
 				$scope.removeable = false;
 				$scope.editable = $scope.job.editable;
 
-				if($scope.job.editable) {
-					$scope.jobInput = 'Enter your post here';
-					
-					// Watch for changes in $scope.selectedMenu
-					$scope.$watch('selectedMenu', function(newValue, oldValue) {
-						if($scope.selectedMenu)	{
-							console.log($scope.selectedMenu);
+				$scope.init = function() {
+					console.log($scope.job);
 
-							$scope.type = 'job--' + $scope.selectedMenu.link.toLowerCase().replace(/ /g, '-');
-							$scope.maxChars = $scope.selectedMenu.length;
-						}	
-					})
-				} else {
-					$scope.type = 'job--' + $scope.job.cat.link.toLowerCase().replace(/ /g, '-');
-					$scope.content = $sce.trustAsHtml($scope.job.content);
-					$scope.timestamp = $scope.job.timestamp * 1000;
+					if($scope.job.editable) {
+						$scope.jobInput = 'Enter your post here';
+						
+						// Watch for changes in $scope.selectedMenu
+						$scope.$watch('selectedMenu', function(newValue, oldValue) {
+							if($scope.selectedMenu)	{
+								// Set the job type as a class
+								$scope.type = 'job--' + $scope.selectedMenu.link.toLowerCase().replace(/ /g, '-');
+
+								// Set the maximum characters
+								$scope.maxChars = $scope.selectedMenu.length;
+							}	
+						})
+					} else {
+						// Generate the link for this job
+						var jobLink = 'http://wall.barcamp.hk/job/' + $scope.job.jobLink;
+
+						// Set twitter / mail links
+						$scope.twitterLink = 'http://twitter.com/home?status=' + $scope.job.content.substr(0, 50) + ' - ' + jobLink;
+						$scope.mailLink = 'mailto:?body=' + $scope.job.content + ' - ' + jobLink;
+
+						// Set the job type as a class
+						$scope.type = 'job--' + $scope.job.cat.link.toLowerCase().replace(/ /g, '-');
+
+						// Set the content
+						$scope.content = $sce.trustAsHtml($scope.job.content);
+
+						// Set the timestamp (Rendered by angular)
+						$scope.timestamp = $scope.job.timestamp * 1000;
+					}
 				}
+
+				$scope.init();
 
 				$scope.createEditableJob = function() {
 
 				}
 
-				// Share job via email
-				$scope.shareEmail = function() {
-					window.alert('email');
-				}
-				// Share job via twitter
-				$scope.shareTwitter = function() {
-					window.alert('twitter');
-				}
 				// Remove a job
 				$scope.trash = function() {
 					window.alert('trash');
@@ -56,6 +67,16 @@
 				// Create a new post
 				$scope.createPost = function() {
 					console.log($scope.jobInput);
+
+					// 1. Send http request to save job
+
+					// 2. http request will return link
+
+					$scope.editable = false;
+					$scope.job.content = $scope.jobInput;
+					$scope.job.timestamp = new Date().getTime();
+
+					$scope.init();
 				}
 
 				// Cancel creating a new post

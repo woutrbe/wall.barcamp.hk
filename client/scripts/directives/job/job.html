@@ -1,8 +1,8 @@
 <div class="job {{ type }}" ng-class="{ready: !editable}">
 	<div class="job__toolbar" ng-show="!editable">
 		<ul>
-			<li><a ng-click="shareEmail()" href="#" title=""><i class="fa fa-envelope"></i></a></li>
-			<li><a ng-click="shareTwitter()" href="#" title=""><i class="fa fa-twitter"></i></a></li>
+			<li><a href="{{ mailLink }}" title="Mail this job"><i class="fa fa-envelope"></i></a></li>
+			<li><a href="{{ twitterLink }}" target="_blank" title="Tweet this job"><i class="fa fa-twitter"></i></a></li>
 			<li><a ng-click="trash()" href="#" title=""><i class="fa fa-trash-o"></i></a></li>
 			<li><a ng-click="flag()" href="#" title=""><i class="fa fa-flag"></i></a></li>
 		</ul>
