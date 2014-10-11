@@ -2,22 +2,25 @@
 require_once 'class-database.php';
 require_once 'class-jobs.php';
 
-if(isset($_POST['ajax'])) {
-	switch($_POST['action']) {
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
+
+if(isset($request->ajax)) {
+	switch($request->action) {
 		// return a list of categories
 		case 'getCats':
 			echo json_encode(Jobs::getCats());
 			break;
 		case 'getJobs':
-			echo json_encode(Jobs::getJobs($_POST['page']));
+			echo json_encode(Jobs::getJobs($request->page));
 			break;
 		case 'saveJob':
-			$json = Jobs::createJob($_POST['content'], $_POST['catID']);
+			$json = Jobs::createJob($request->content, $request->catID);
 			echo $json;
 			
 			break;
 		case 'checkOwnerShip':
-			$jobID = $_POST['jobID'];
+			$jobID = $request->jobID;
 			
 			if(Jobs::checkOwnerShip($jobID)) {
 				echo 'true';
@@ -26,7 +29,7 @@ if(isset($_POST['ajax'])) {
 			}
 			break;
 		case 'deleteJob':
-			$jobID = $_POST['jobID'];
+			$jobID = $request->jobID;
 			
 			if(Jobs::checkOwnerShip($jobID)) {
 				Jobs::removeJobs($jobID);
@@ -37,7 +40,7 @@ if(isset($_POST['ajax'])) {
 			}
 			break;
 		case 'flagJob':
-			$jobID = $_POST['jobID'];
+			$jobID = $request->jobID;
 			
 			if(Jobs::flagJob($jobID)) {
 				// instant hide when owner

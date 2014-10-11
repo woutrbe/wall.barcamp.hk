@@ -177,11 +177,11 @@ class Jobs {
 		
 		$sql = 'INSERT INTO jobs (userID, catID, content, timestamp, link) VALUES(?, ?, ?, ?, ?)';
 		if($stm = $db->prepare($sql)) {
-			$userID = $_SESSION['user']['userID'];
+			$userID = 1;
 			$link = uniqid();
 			
 			// cut content
-			if($_SESSION['user']['owner'] == 1) {
+			if(false == false) {
 				$length = 9999;
 			} else {
 				$length = self::getCatLength($catID);

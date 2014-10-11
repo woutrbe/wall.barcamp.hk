@@ -12,10 +12,14 @@
 					deferredMenu.resolve(links);
 				} else {
 					if(!deferredMenuStarted) {
-						$http.post('../server/api.php', {
-							ajax: true,
-							action: 'getCats'
-						}).success(function(data) {
+						$http({
+							method: 'POST',
+							url: '../server/api.php',
+							data: {
+								ajax: true,
+								action: 'getCats'
+							}
+						}).success(function(data, status, headers, config) {
 							links = data;
 
 							deferredMenu.resolve(data);
@@ -30,10 +34,14 @@
 			getJobs: function(page) {
 				var deferred = $q.defer();
 
-				$http.post('../server/api.php', {
-					ajax: true,
-					action: 'getJobs',
-					page: page
+				$http({
+					method: 'POST',
+					url: '../server/api.php',
+					data: {
+						ajax: true,
+						action: 'getJobs',
+						page: page
+					}
 				}).success(function(data) {
 					jobs = data;
 
@@ -42,19 +50,26 @@
 
 				return deferred.promise;
 			},
-			saveJobs: function(content, catID) {
+			saveJob: function(content, catID) {
 				var deferred = $q.defer();
 
-				$http.post('../server/api.php', {
-					ajax: true,
-					action: 'saveJob',
-					content: content,
-					catID: catID
+				$http({
+					method: 'POST',
+					url: '../server/api.php',
+					data: {
+						ajax: true,
+						action: 'saveJob',
+						content: content,
+						catID: catID
+					},
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					}
 				}).success(function(data) {
 					deferred.resolve(data);
 				})
 
-				return deffered.promise;
+				return deferred.promise;
 			}
 		}
 	}])

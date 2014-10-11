@@ -1,7 +1,7 @@
 (function() {
 	// Job directive
-	var app = angular.module('wall.jobModule', ['monospaced.elastic']);
-	app.directive('job', ['$sce', function($sce) {
+	var app = angular.module('wall.jobModule', ['monospaced.elastic', 'wall.dataService']);
+	app.directive('job', ['$sce', 'dataService', function($sce, dataService) {
 		return {
 			restrict: 'E',
 			templateUrl: 'scripts/directives/job/job.html',
@@ -13,8 +13,6 @@
 				$scope.editable = $scope.job.editable;
 
 				$scope.init = function() {
-					console.log($scope.job);
-
 					if($scope.job.editable) {
 						$scope.jobInput = 'Enter your post here';
 						
@@ -66,17 +64,19 @@
 
 				// Create a new post
 				$scope.createPost = function() {
-					console.log($scope.jobInput);
-
-					// 1. Send http request to save job
-
-					// 2. http request will return link
+					var content = $scope.jobInput,
+						catID = $scope.selectedMenu.id;
 
 					$scope.editable = false;
-					$scope.job.content = $scope.jobInput;
 					$scope.job.timestamp = new Date().getTime();
 
-					$scope.init();
+					dataService.saveJob(content, catID).then(function(data) {
+						$scope.job.jobID = data.jobID;
+						$scope.job.jobLink = data.link;
+						$scope.job.content = data.content;
+
+						$scope.init();
+					})
 				}
 
 				// Cancel creating a new post
