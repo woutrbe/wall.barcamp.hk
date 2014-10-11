@@ -12,7 +12,10 @@
 					deferredMenu.resolve(links);
 				} else {
 					if(!deferredMenuStarted) {
-						$http.get('../server/api.php?ajax=true&action=getCats').success(function(data) {
+						$http.post('../server/api.php', {
+							ajax: true,
+							action: 'getCats'
+						}).success(function(data) {
 							links = data;
 
 							deferredMenu.resolve(data);
@@ -27,13 +30,31 @@
 			getJobs: function(page) {
 				var deferred = $q.defer();
 
-				$http.get('../server/api.php?ajax=true&action=getJobs&page=' + page).success(function(data) {
+				$http.post('../server/api.php', {
+					ajax: true,
+					action: 'getJobs',
+					page: page
+				}).success(function(data) {
 					jobs = data;
 
 					deferred.resolve(data);
 				})
 
 				return deferred.promise;
+			},
+			saveJobs: function(content, catID) {
+				var deferred = $q.defer();
+
+				$http.post('../server/api.php', {
+					ajax: true,
+					action: 'saveJob',
+					content: content,
+					catID: catID
+				}).success(function(data) {
+					deferred.resolve(data);
+				})
+
+				return deffered.promise;
 			}
 		}
 	}])
