@@ -174,3 +174,25 @@ body {
   .addJob:hover {
     background-size: 132px 132px;
     background: url('../img/addJob_hover.png') center center no-repeat; }
+
+.sidebar {
+  position: fixed;
+  z-index: 100;
+  left: 20px;
+  top: 20px; }
+  .sidebar h1 a {
+    color: #f25a95;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 29px;
+    line-height: 30px; }
+    .sidebar h1 a span {
+      padding: 5px; }
+    .sidebar h1 a:hover span {
+      background-color: #f25a95;
+      color: white; }
+  .sidebar p {
+    display: block;
+    width: 190px;
+    font-size: 13px;
+    line-height: 17px; }

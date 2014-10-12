@@ -42,6 +42,8 @@
 
 						// Set the timestamp (Rendered by angular)
 						$scope.timestamp = $scope.job.timestamp * 1000;
+
+						// $scope.$apply();
 					}
 				}
 
