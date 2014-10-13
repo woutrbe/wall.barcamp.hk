@@ -19,6 +19,8 @@
 						// Watch for changes in $scope.selectedMenu
 						$scope.$watch('selectedMenu', function(newValue, oldValue) {
 							if($scope.selectedMenu)	{
+								$scope.job.cat = $scope.selectedMenu;
+
 								// Set the job type as a class
 								$scope.type = 'job--' + $scope.selectedMenu.link.toLowerCase().replace(/ /g, '-');
 
@@ -27,24 +29,27 @@
 							}	
 						})
 					} else {
-						// Generate the link for this job
-						var jobLink = 'http://wall.barcamp.hk/job/' + $scope.job.jobLink;
-
-						// Set twitter / mail links
-						$scope.twitterLink = 'http://twitter.com/home?status=' + $scope.job.content.substr(0, 50) + ' - ' + jobLink;
-						$scope.mailLink = 'mailto:?body=' + $scope.job.content + ' - ' + jobLink;
-
-						// Set the job type as a class
-						$scope.type = 'job--' + $scope.job.cat.link.toLowerCase().replace(/ /g, '-');
-
-						// Set the content
-						$scope.content = $sce.trustAsHtml($scope.job.content);
-
-						// Set the timestamp (Rendered by angular)
-						$scope.timestamp = $scope.job.timestamp * 1000;
-
-						// $scope.$apply();
+						$scope.setContent($scope.job);
 					}
+				}
+
+				// Set the content of a job posting
+				$scope.setContent = function(job) {
+					// Generate the link for this job
+					var jobLink = 'http://wall.barcamp.hk/job/' + job.jobLink;
+
+					// Set twitter / mail links
+					$scope.twitterLink = 'http://twitter.com/home?status=' + job.content.substr(0, 50) + ' - ' + jobLink;
+					$scope.mailLink = 'mailto:?body=' + job.content + ' - ' + jobLink;
+
+					// Set the job type as a class
+					$scope.type = 'job--' + job.cat.link.toLowerCase().replace(/ /g, '-');
+
+					// Set the content
+					$scope.content = $sce.trustAsHtml(job.content);
+
+					// Set the timestamp (Rendered by angular)
+					$scope.timestamp = job.timestamp * 1000;
 				}
 
 				$scope.init();
@@ -73,11 +78,13 @@
 					$scope.job.timestamp = new Date().getTime();
 
 					dataService.saveJob(content, catID).then(function(data) {
+						// Set the jobID, jobLink and contetn returned by the api call
 						$scope.job.jobID = data.jobID;
 						$scope.job.jobLink = data.link;
 						$scope.job.content = data.content;
 
-						$scope.init();
+						// Re set the content
+						$scope.setContent($scope.job);
 					})
 				}
 
