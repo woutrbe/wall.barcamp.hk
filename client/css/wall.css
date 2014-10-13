@@ -2,6 +2,9 @@ body {
   font-family: "Courier New", Courier, monospace;
   background-image: url('../img/tiledBg_small.png'); }
 
+.jobs {
+  margin-left: 220px; }
+
 .job {
   position: relative;
   box-sizing: border-box;
@@ -177,22 +180,47 @@ body {
 
 .sidebar {
   position: fixed;
-  z-index: 100;
-  left: 20px;
+  left: 0px;
   top: 20px; }
-  .sidebar h1 a {
-    color: #f25a95;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 29px;
-    line-height: 30px; }
-    .sidebar h1 a span {
-      padding: 5px; }
-    .sidebar h1 a:hover span {
-      background-color: #f25a95;
-      color: white; }
+  .sidebar h1 {
+    margin-left: 20px; }
+    .sidebar h1 a {
+      font-family: chunk-1, chunk-2;
+      color: #f25a95;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 29px;
+      line-height: 30px; }
+      .sidebar h1 a span {
+        padding: 5px; }
+      .sidebar h1 a:hover span {
+        background-color: #f25a95;
+        color: white; }
   .sidebar p {
     display: block;
     width: 190px;
+    margin-left: 20px;
     font-size: 13px;
     line-height: 17px; }
+
+.main-nav {
+  margin: 0px;
+  padding: 0px; }
+
+.navigation {
+  margin: 0px;
+  padding: 0px; }
+  .navigation li {
+    list-style: none; }
+  .navigation a {
+    display: inline-block;
+    border: 1px solid #cdcdcd;
+    border-left: none;
+    padding: 17px 50px 12px 20px;
+    margin: 0 0 2px 0;
+    font-family: Helvetica Neue LT Std, Helvetica, Arial;
+    font-size: 16px;
+    color: black;
+    text-decoration: none; }
+    .navigation a:hover {
+      color: white; }

@@ -1,12 +1,14 @@
 .sidebar {
 	position: fixed;
-	z-index: 100;
 
-	left: 20px;
+	left: 0px;
 	top: 20px;
 
 	h1 {
+		margin-left: 20px;
+
 		a {
+			font-family: chunk-1, chunk-2;
 			color: $job-admin-notice;
 			text-decoration: none;
 			text-transform: uppercase;	
@@ -28,8 +30,41 @@
 	p {
 		display: block;
 		width: 190px;
+		margin-left: 20px;
 
 		font-size: 13px;
 		line-height: 17px;
 	}
 }
+
+.main-nav {
+	margin: 0px;
+	padding: 0px;
+}
+	.navigation {
+		margin: 0px;
+		padding: 0px;
+
+		li {
+			list-style: none;
+		}
+
+		a {
+			display: inline-block;
+
+			border: 1px solid rgb(205, 205, 205);
+			border-left: none;
+
+			padding: 17px 50px 12px 20px;
+			margin: 0 0 2px 0;
+
+			font-family: Helvetica Neue LT Std, Helvetica, Arial;
+			font-size: 16px;
+			color: rgb(0, 0, 0);
+			text-decoration: none;
+
+			&:hover {
+				color: rgb(255, 255, 255);
+			}
+		}
+	}

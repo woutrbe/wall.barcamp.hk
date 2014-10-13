@@ -1,5 +1,5 @@
 <ul class="navigation">
-	<li ng-repeat="link in menuCtrl.links">
-		<a href="" ng-click="sort(link.link)">{{ link.link }}</a>
+	<li ng-repeat="link in links">
+		<a href="" ng-click="sort(link.link)" ng-mouseover="mouseoverHandler($event, link.color)" ng-mouseout="mouseoutHandler($event)">{{ link.link }}</a>
 	</li>
 </ul>

@@ -22,6 +22,13 @@
 					window.alert('sort by: ' + sortBy);
 				}
 
+				$scope.mouseoverHandler = function(e, color) {
+					// angular.element(e.srcElement).style.backgroundColor = color;
+				}
+				$scope.mouseoutHandler = function(e) {
+
+				}
+
 				return $scope;
 			},
 			controllerAs: 'menuCtrl'
