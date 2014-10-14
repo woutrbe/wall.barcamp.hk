@@ -1,5 +1,8 @@
 (function() {
-	var app = angular.module('wall.jobsModule', ['wall.dataService']);
+	var app = angular.module('wall.jobsModule', [
+		'wall.dataService',
+		'wall.masonry.directive'
+	]);
 
 	app.controller('JobsController', ['$scope', '$rootScope', '$http', 'dataService', function($scope, $rootScope, $http, dataService) {
 		$scope.jobs = [];

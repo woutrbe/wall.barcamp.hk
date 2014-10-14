@@ -49,7 +49,7 @@
 					$scope.content = $sce.trustAsHtml(job.content);
 
 					// Set the timestamp (Rendered by angular)
-					$scope.timestamp = job.timestamp * 1000;
+					$scope.timestamp = job.timestamp;
 				}
 
 				$scope.init();

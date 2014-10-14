@@ -89,7 +89,7 @@ class Jobs {
 
 					$content = html_entity_decode(self::formatContent(str_replace('&amp;nbsp;', ' ', stripslashes($content))));
 					
-					$job = array('jobID' => $jobID, 'content' => $content, 'timestamp' => $timestamp, 'jobLink' => $jobLink, 'catID' => $catID);
+					$job = array('jobID' => $jobID, 'content' => $content, 'timestamp' => $timestamp * 1000, 'jobLink' => $jobLink, 'catID' => $catID);
 					// $job = self::createJobView($job);
 					
 					array_push($jobs, $job);
