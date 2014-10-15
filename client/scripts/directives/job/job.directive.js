@@ -1,7 +1,7 @@
 (function() {
 	// Job directive
 	var app = angular.module('wall.jobModule', ['monospaced.elastic', 'wall.dataService']);
-	app.directive('job', ['$sce', 'dataService', function($sce, dataService) {
+	app.directive('job', [function() {
 		return {
 			restrict: 'E',
 			templateUrl: 'scripts/directives/job/job.html',

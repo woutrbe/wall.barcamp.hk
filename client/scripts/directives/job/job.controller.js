@@ -1,6 +1,6 @@
 (function() {
 	var app = angular.module('wall.jobModule');
-	app.controller('JobController', ['$scope', '$rootScope', '$sce', function($scope, $rootScope, $sce) {
+	app.controller('JobController', ['$scope', '$rootScope', '$sce', 'dataService', function($scope, $rootScope, $sce, dataService) {
 		$scope.removeable = false;
 		$scope.editable = $scope.job.editable;
 
@@ -77,6 +77,8 @@
 
 				// Re set the content
 				$scope.setContent($scope.job);
+
+				$scope.$emit('wall.masonry.layout');
 			})
 		}
 
@@ -93,11 +95,16 @@
 			$scope.expanded = false;
 		}
 
+		// Add an elemenent to the masonry container
+		// This will simply emit an event, which will be handled in masonry.directive
 		$scope.addToMasonry = function(element) {
-			console.log('Add element to masonry');
+			$scope.$emit('wall.masonry.addToMasonry', element);
 		}
+
+		// Remove an element from the masonry container
+		// This will simply emit an event, which will be handled in masonry.directive
 		$scope.removeFromMasonry = function(element) {
-			console.log('Remove element from masonry');
+			$scope.$emit('wall.masonry.removeFromMasonry', element);
 		}
 
 		return $scope;
