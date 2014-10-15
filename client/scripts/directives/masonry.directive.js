@@ -5,7 +5,9 @@
 			restrict: 'A',
 			scope: {},
 			link: function(scope, element, attrs) {
-				
+				var msnry = new Masonry(element[0], {
+					itemSelector: '> job'
+				})
 			}
 		}
 	}])
