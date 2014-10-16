@@ -19,7 +19,8 @@
 				timestamp: new Date().getTime(),
 				link: '',
 				editable: true,
-				removeable: false
+				removeable: false,
+				prepend: true
 			}
 
 			// 2. Add the new job to our array of jobs

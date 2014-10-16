@@ -10,7 +10,7 @@
 			},
 			link: function(scope, element, attrs, ctrl) {
 				// Add the element to the masonry grid
-				ctrl.addToMasonry(element);
+				ctrl.addToMasonry(element, scope.job.prepend);
 
 				// Remove the element from the masonry grid
 				element.on('$destroy', function() {

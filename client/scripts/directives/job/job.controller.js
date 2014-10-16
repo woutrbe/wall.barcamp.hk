@@ -97,8 +97,8 @@
 
 		// Add an elemenent to the masonry container
 		// This will simply emit an event, which will be handled in masonry.directive
-		$scope.addToMasonry = function(element) {
-			$scope.$emit('wall.masonry.addToMasonry', element);
+		$scope.addToMasonry = function(element, prepend) {
+			$scope.$emit('wall.masonry.addToMasonry', element, prepend);
 		}
 
 		// Remove an element from the masonry container

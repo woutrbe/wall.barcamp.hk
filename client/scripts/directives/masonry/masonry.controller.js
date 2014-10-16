@@ -13,8 +13,6 @@
 			$scope.itemsToAdd.push(element[0]);
 
 			$scope.addTimeout = window.setTimeout(function() {
-				console.log($scope.itemsToAdd);
-
 				if($scope.prepend) {
 					$scope.msnry.prepended($scope.itemsToAdd);
 				} else {

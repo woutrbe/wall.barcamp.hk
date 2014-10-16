@@ -5,6 +5,9 @@ body {
 .jobs {
   margin-left: 220px; }
 
+.job-container {
+  float: left; }
+
 .job {
   position: relative;
   box-sizing: border-box;

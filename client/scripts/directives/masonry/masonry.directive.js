@@ -9,8 +9,8 @@
 					itemSelector: '.job-container'
 				})
 
-				scope.$on('wall.masonry.addToMasonry', function(event, element) {
-					ctrl.addToMasonry(element);
+				scope.$on('wall.masonry.addToMasonry', function(event, element, prepend) {
+					ctrl.addToMasonry(element, prepend);
 				})
 
 				scope.$on('wall.masonry.removeFromMasonry', function(event, element) {
