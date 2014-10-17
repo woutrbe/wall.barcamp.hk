@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/woutrbe/wall.barcamp.hk.svg?branch=master)](https://travis-ci.org/woutrbe/wall.barcamp.hk)
+
 # wall.barcamp.hk
 http://wall.barcamp.hk
 
