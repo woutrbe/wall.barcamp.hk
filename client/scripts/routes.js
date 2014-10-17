@@ -9,11 +9,21 @@
 			})
 			.when('/job/:job', {
 				templateUrl: 'partials/jobs-detail.html',
-				controller: 'JobsDetailController'
+				controller: 'JobsDetailController',
+				resolve: {
+					job: function($route, dataService) {
+						return dataService.getJob($route.current.params.job)
+					}
+				}
 			})
 			.when('/new', {
-				template: '',
-				controller: 'AddJobController'
+				resolve: {
+					new: function() {
+						console.log('new');
+
+						return false;
+					}
+				}
 			})
 			.when('/404', {
 				templateUrl: 'partials/jobs-detail.html',

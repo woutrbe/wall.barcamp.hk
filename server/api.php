@@ -14,6 +14,9 @@ if(isset($request->ajax)) {
 		case 'getJobs':
 			echo json_encode(Jobs::getJobs($request->page));
 			break;
+		case 'getJob':
+			echo json_encode(Jobs::checkJob($request->link));
+			break;
 		case 'saveJob':
 			$json = Jobs::createJob($request->content, $request->catID);
 			echo $json;

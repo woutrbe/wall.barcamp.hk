@@ -50,6 +50,23 @@
 
 				return deferred.promise;
 			},
+			getJob: function(link) {
+				var deferred = $q.defer();
+
+				$http({
+					method: 'POST',
+					url: '../server/api.php',
+					data: {
+						ajax: true,
+						action: 'getJob',
+						link: link
+					}
+				}).success(function(data) {
+					deferred.resolve(data);
+				})
+
+				return deferred.promise;
+			},
 			saveJob: function(content, catID) {
 				var deferred = $q.defer();
 
