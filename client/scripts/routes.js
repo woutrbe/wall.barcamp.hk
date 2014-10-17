@@ -20,6 +20,7 @@
 				controller: 'JobsDetailController',
 				resolve: {
 					job: function($route, dataService) {
+						// Check if job actually exists
 						return dataService.getJob($route.current.params.job);
 					},
 					menu: function(dataService) {
@@ -38,7 +39,12 @@
 			})
 			.when('/404', {
 				templateUrl: 'partials/jobs-detail.html',
-				controller: 'NotFoundController'
+				controller: 'NotFoundController',
+				resolve: {
+					menu: function(dataService) {
+						return dataService.getMenu();
+					}
+				}
 			})
 			.otherwise({
 				redirectTo: '/404'
