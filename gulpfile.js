@@ -40,3 +40,6 @@ gulp.task('connect-dist', function() {
 		port: 3001
 	})
 })
+
+// CI
+gulp.task('ci', []);
