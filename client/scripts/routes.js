@@ -5,7 +5,15 @@
 		$routeProvider
 			.when('/', {
 				templateUrl: 'partials/jobs-list.html',
-				controller: 'JobsController'
+				controller: 'JobsController',
+				resolve: {
+					tmpJobs: function(dataService) {
+						return dataService.getJobs(0);
+					},
+					menu: function(dataService) {
+						return dataService.getMenu();
+					}
+				}
 			})
 			.when('/job/:job', {
 				templateUrl: 'partials/jobs-detail.html',
@@ -13,6 +21,9 @@
 				resolve: {
 					job: function($route, dataService) {
 						return dataService.getJob($route.current.params.job);
+					},
+					menu: function(dataService) {
+						return dataService.getMenu();
 					}
 				}
 			})

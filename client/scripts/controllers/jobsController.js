@@ -4,11 +4,23 @@
 		'wall.masonry'
 	]);
 
-	app.controller('JobsController', ['$scope', '$rootScope', '$http', 'dataService', function($scope, $rootScope, $http, dataService) {
+	app.controller('JobsController', ['$scope', '$rootScope', '$http', 'dataService', 'tmpJobs', 'menu', function($scope, $rootScope, $http, dataService, tmpJobs, menu) {
 		$scope.jobs = [];
-		dataService.getJobs(0).then(function(jobs) {
-			$scope.matchJobWithMenu(jobs);
-		})
+
+		// Match our jobs with the corresponding menu item
+		$scope.matchJobWithMenu = function(jobs, menu) {
+			var tmpJob = {};
+			for(var i = 0; i < jobs.length; i++) {
+				tmpJob = jobs[i];
+				
+				var cat = _.filter(menu, {id: tmpJob.catID.toString()});
+				tmpJob.cat = cat[0];
+
+				$scope.jobs.push(tmpJob);
+			}
+		}
+		
+		$scope.matchJobWithMenu(tmpJobs, menu);
 
 		// Listen to the wall.newJob event to create a new job
 		$rootScope.$on('wall.newJob', function() {
@@ -32,21 +44,6 @@
 			// 1. Return a new jobs array without the given job
 			$scope.jobs = _.without($scope.jobs, job);
 		})
-
-		// Match our jobs with the corresponding menu item
-		$scope.matchJobWithMenu = function(jobs) {
-			dataService.getMenu().then(function(links) {
-				var tmpJob = {};
-				for(var i = 0; i < jobs.length; i++) {
-					tmpJob = jobs[i];
-					
-					var cat = _.filter(links, {id: tmpJob.catID.toString()});
-					tmpJob.cat = cat[0];
-
-					$scope.jobs.push(tmpJob);
-				}
-			})
-		}
 
 		return $scope;
 	}]);
