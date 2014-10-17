@@ -8,6 +8,21 @@ body {
 .job-container {
   float: left; }
 
+.job-detail {
+  max-width: 450px;
+  width: 100%;
+  margin: 90px auto 0; }
+  .job-detail .job-container {
+    float: none; }
+  .job-detail .job {
+    width: 100%;
+    margin: 0; }
+  .job-detail .job__body {
+    font-size: 23px;
+    line-height: 28px; }
+  .job-detail .job__date {
+    font-size: 18px; }
+
 .job {
   position: relative;
   box-sizing: border-box;

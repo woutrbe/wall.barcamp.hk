@@ -2,10 +2,11 @@
 	var app = angular.module('wall.jobModule');
 	app.controller('JobController', ['$scope', '$rootScope', '$sce', 'dataService', function($scope, $rootScope, $sce, dataService) {
 		$scope.removeable = false;
-		$scope.editable = $scope.job.editable;
+		$scope.editable = ($scope.job.editable !== undefined ? $scope.job.editable : false);
+		$scope.toolbar = ($scope.job.toolbar !== undefined ? $scope.job.toolbar : true);
 
 		$scope.init = function() {
-			if($scope.job.editable) {
+			if($scope.editable) {
 				$scope.jobInput = 'Enter your post here';
 				
 				// Watch for changes in $scope.selectedMenu

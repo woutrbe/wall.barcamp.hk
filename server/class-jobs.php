@@ -144,7 +144,10 @@ class Jobs {
 				$stm->bind_result($jobID, $content, $timestamp, $jobLink, $catID, $color, $link);
 				
 				while($stm->fetch()) {
-					return array('jobID' => $jobID, 'content' => $content, 'timestamp' => $timestamp, 'jobLink' => $jobLink, 'catID' => $catID, 'color' => $color, "link" => $link);
+					return array('jobID' => $jobID, 'content' => $content, 'timestamp' => $timestamp, 'jobLink' => $jobLink, 'catID' => $catID, 
+						'cat' => array(
+							'color' => $color, "link" => $link
+						));
 				}
 			}
 		}

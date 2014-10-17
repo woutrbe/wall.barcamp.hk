@@ -4,6 +4,8 @@
 	app.controller('JobsDetailController', ['$scope', '$rootScope', 'job', function($scope, $rootScope, job) {
 		console.log(job);
 
+		$scope.job = job;
+
 		// 1. Validate if link is a string with characters and numbers
 
 		// 2. Use dataService to send the link to the backend

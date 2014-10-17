@@ -12,7 +12,7 @@
 				controller: 'JobsDetailController',
 				resolve: {
 					job: function($route, dataService) {
-						return dataService.getJob($route.current.params.job)
+						return dataService.getJob($route.current.params.job);
 					}
 				}
 			})

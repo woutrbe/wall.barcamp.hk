@@ -1,5 +1,5 @@
 <div class="job {{ type }}" ng-class="{ready: !editable}">
-	<div class="job__toolbar" ng-show="!editable">
+	<div class="job__toolbar" ng-show="!editable && toolbar">
 		<ul>
 			<li><a href="{{ mailLink }}" title="Mail this job"><i class="fa fa-envelope"></i></a></li>
 			<li><a href="{{ twitterLink }}" target="_blank" title="Tweet this job"><i class="fa fa-twitter"></i></a></li>
@@ -34,7 +34,9 @@
 			</div>
 		</div>
 		<div ng-show="!editable">
-			{{ content }}
+			<div class="job__body">
+				{{ content }}
+			</div>
 
 			<span class="job__date">Posted on {{ timestamp | date : "MMM d 'at' HH:mm" }}</span>
 		</div>
