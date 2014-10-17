@@ -3,11 +3,21 @@
 
 	app.config(function($routeProvider) {
 		$routeProvider
+			// By default, redirect to /filter/all
 			.when('/', {
+				redirectTo: '/filter/all'
+			})
+			.when('/filter/:filter', {
 				templateUrl: 'partials/jobs-list.html',
 				controller: 'JobsController',
 				resolve: {
-					tmpJobs: function(dataService) {
+					// 1. Get all menu items
+
+					// 2. Validate the given filter
+
+					// 3. Load jobs with this filter
+					tmpJobs: function($route, dataService) {
+						console.log($route.current.params.filter);
 						return dataService.getJobs(0);
 					},
 					menu: function(dataService) {
@@ -29,13 +39,7 @@
 				}
 			})
 			.when('/new', {
-				resolve: {
-					new: function() {
-						console.log('new');
-
-						return false;
-					}
-				}
+				redirectTo: '/#new'
 			})
 			.when('/404', {
 				templateUrl: 'partials/jobs-detail.html',
@@ -46,6 +50,7 @@
 					}
 				}
 			})
+			// Redirect to 404 page in case of anything else
 			.otherwise({
 				redirectTo: '/404'
 			})

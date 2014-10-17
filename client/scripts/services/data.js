@@ -22,7 +22,11 @@
 						}).success(function(data, status, headers, config) {
 							links = data;
 
-							deferredMenu.resolve(data);
+							_.each(links, function(link) {
+								link.safeLink = link.link.toLowerCase().replace(/ /g, '-');
+							})
+
+							deferredMenu.resolve(links);
 						})
 					}
 
@@ -81,6 +85,40 @@
 					},
 					headers: {
 						'Content-Type': 'application/x-www-form-urlencoded'
+					}
+				}).success(function(data) {
+					deferred.resolve(data);
+				})
+
+				return deferred.promise;
+			},
+			removeJob: function(job) {
+				var deferred = $q.defer();
+
+				$http({
+					method: 'POST',
+					url: '../server/api.php',
+					data: {
+						ajax: true,
+						action: 'deleteJob',
+						jobID: job.jobID
+					}
+				}).success(function(data) {
+					deferred.resolve(data);
+				})
+
+				return deferred.promise;
+			},
+			flagJob: function(job) {
+				var deferred = $q.defer();
+
+				$http({
+					method: 'POST',
+					url: '../server/api.php',
+					data: {
+						ajax: true,
+						action: 'flagJob',
+						jobID: job.jobID
 					}
 				}).success(function(data) {
 					deferred.resolve(data);

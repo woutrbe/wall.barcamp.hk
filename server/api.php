@@ -12,7 +12,7 @@ if(isset($request->ajax)) {
 			echo json_encode(Jobs::getCats());
 			break;
 		case 'getJobs':
-			echo json_encode(Jobs::getJobs($request->page));
+			echo json_encode(Jobs::getJobs($request->page, $request->cat));
 			break;
 		case 'getJob':
 			echo json_encode(Jobs::checkJob($request->link));
@@ -49,12 +49,12 @@ if(isset($request->ajax)) {
 				// instant hide when owner
 				if($_SESSION['user']['owner'] == 1 && Jobs::checkJobForFlags($jobID) > 0) {
 					Jobs::hideJob($jobID);
-					echo 'hide';
+					echo 'true';
 				} elseif(Jobs::checkJobForFlags($jobID) >= 5) {
 					Jobs::hideJob($jobID);
-					echo 'hide';
-				} else {
 					echo 'true';
+				} else {
+					echo 'flag';
 				}
 			} else {
 				echo 'false';

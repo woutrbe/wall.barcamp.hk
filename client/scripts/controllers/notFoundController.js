@@ -9,6 +9,7 @@
 			link: '',
 			toolbar: false,
 			cat: {
+				safeLink: "admin-notice",
 				link: "Admin Notice"
 			}
 		}

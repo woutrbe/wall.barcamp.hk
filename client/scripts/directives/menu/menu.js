@@ -10,7 +10,8 @@
 					{
 						color: '242, 90, 149',
 						id: '0',
-						link: 'View all'
+						link: 'View all',
+						safeLink: 'all'
 					}
 				];
 
@@ -18,15 +19,11 @@
 					$scope.links = $scope.links.concat(data);
 				})
 
-				$scope.sort = function(sortBy) {
-					window.alert('sort by: ' + sortBy);
-				}
-
 				$scope.mouseoverHandler = function(e, color) {
-					// angular.element(e.srcElement).style.backgroundColor = color;
+					angular.element(e.srcElement)[0].style.backgroundColor = 'rgb(' + color + ')';
 				}
 				$scope.mouseoutHandler = function(e) {
-
+					angular.element(e.srcElement)[0].style.backgroundColor = 'rgb(255, 255, 255)';
 				}
 
 				return $scope;

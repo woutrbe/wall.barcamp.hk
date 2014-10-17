@@ -40,6 +40,21 @@
 
 			<span class="job__date">Posted on {{ timestamp | date : "MMM d 'at' HH:mm" }}</span>
 		</div>
-		<div ng-show="removeable">blah blah remove</div>
+		<div ng-show="removeable" class="job__overlay">
+			<div class="inner">
+				<p>{{ removeContent }}</p>
+
+				<a class="job__create-btn" ng-click="confirmRemove()" ng-show="!removeFailed">remove post</a>
+				<a class="job__cancel-btn" ng-click="cancelRemove()">cancel</a>
+			</div>
+		</div>
+		<div ng-show="flagable" class="job__overlay">
+			<div class="inner">
+				<p>{{ flagContent }}</p>
+
+				<a class="job__create-btn" ng-click="confirmFlag()" ng-show="!flagFailed">flag post</a>
+				<a class="job__cancel-btn" ng-click="cancelFlag()" ng-show="!flagged">cancel</a>
+			</div>
+		</div>
 	</div>
 </div>
