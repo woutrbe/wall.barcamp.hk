@@ -5,6 +5,7 @@ http://wall.barcamp.hk
 
 ## Getting started
 `npm install`
+
 `bower install`
 
 ## Gulp
