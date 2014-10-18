@@ -6,17 +6,8 @@
 			restrict: 'E',
 			templateUrl: 'scripts/directives/menu/menu.html',
 			controller: function($scope) {
-				$scope.links = [
-					{
-						color: '242, 90, 149',
-						id: '0',
-						link: 'View all',
-						safeLink: 'all'
-					}
-				];
-
 				dataService.getMenu().then(function(data) {
-					$scope.links = $scope.links.concat(data);
+					$scope.links = data;
 				})
 
 				$scope.mouseoverHandler = function(e, color) {

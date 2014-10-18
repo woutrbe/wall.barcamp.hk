@@ -12,10 +12,6 @@ var gulp 		= require('gulp'),
 var buildDir 	= './build',
 	clientDir 	= './client';
 
-gulp.task('default', function() {
-
-})
-
 gulp.task('dev', ['connect-dev', 'watch'])
 
 // WATCH

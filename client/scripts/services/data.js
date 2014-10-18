@@ -1,7 +1,8 @@
 (function() {
 	var app = angular.module('wall.dataService', []);
 	app.factory('dataService', ['$http', '$q', function($http, $q) {
-		var links = [],
+		var api = 'http://localhost/wall.barcamp.hk/server/api.php',
+			links = [],
 			jobs = [],
 			deferredMenuStarted = false,
 			deferredMenu = $q.defer();
@@ -14,7 +15,7 @@
 					if(!deferredMenuStarted) {
 						$http({
 							method: 'POST',
-							url: '../server/api.php',
+							url: api,
 							data: {
 								ajax: true,
 								action: 'getCats'
@@ -26,6 +27,15 @@
 								link.safeLink = link.link.toLowerCase().replace(/ /g, '-');
 							})
 
+							// Add the "view all" link
+							links.unshift({
+								color: '242, 90, 149',
+								id: '0',
+								link: 'View all',
+								safeLink: 'all',
+								hideFromEditable: true
+							})
+
 							deferredMenu.resolve(links);
 						})
 					}
@@ -35,16 +45,17 @@
 
 				return deferredMenu.promise;
 			},
-			getJobs: function(page) {
+			getJobs: function(page, cat) {
 				var deferred = $q.defer();
 
 				$http({
 					method: 'POST',
-					url: '../server/api.php',
+					url: api,
 					data: {
 						ajax: true,
 						action: 'getJobs',
-						page: page
+						page: page,
+						cat: cat
 					}
 				}).success(function(data) {
 					jobs = data;
@@ -59,7 +70,7 @@
 
 				$http({
 					method: 'POST',
-					url: '../server/api.php',
+					url: api,
 					data: {
 						ajax: true,
 						action: 'getJob',
@@ -76,7 +87,7 @@
 
 				$http({
 					method: 'POST',
-					url: '../server/api.php',
+					url: api,
 					data: {
 						ajax: true,
 						action: 'saveJob',
@@ -97,7 +108,7 @@
 
 				$http({
 					method: 'POST',
-					url: '../server/api.php',
+					url: api,
 					data: {
 						ajax: true,
 						action: 'deleteJob',
@@ -114,7 +125,7 @@
 
 				$http({
 					method: 'POST',
-					url: '../server/api.php',
+					url: api,
 					data: {
 						ajax: true,
 						action: 'flagJob',

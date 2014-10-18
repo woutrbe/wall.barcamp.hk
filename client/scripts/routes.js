@@ -1,24 +1,39 @@
 (function() {
 	var app = angular.module('wall.routes', ['ngRoute']);
 
-	app.config(function($routeProvider) {
+	app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+		$locationProvider.html5Mode(true);
+
 		$routeProvider
 			// By default, redirect to /filter/all
 			.when('/', {
 				redirectTo: '/filter/all'
 			})
 			.when('/filter/:filter', {
-				templateUrl: 'partials/jobs-list.html',
+				templateUrl: '/partials/jobs-list.html',
 				controller: 'JobsController',
 				resolve: {
-					// 1. Get all menu items
+					tmpJobs: function($route, $q, $location, dataService) {
+						var jobsQ = $q.defer();
 
-					// 2. Validate the given filter
+						dataService.getMenu().then(function(links) {
+							var currentCat = _.findWhere(links, {safeLink: $route.current.params.filter});
 
-					// 3. Load jobs with this filter
-					tmpJobs: function($route, dataService) {
-						console.log($route.current.params.filter);
-						return dataService.getJobs(0);
+							if(currentCat === undefined) {
+								// If the given category doesn't exist, reject the promise
+								// And redirect to 404
+								jobsQ.reject();
+
+								$location.path('404');
+							} else {
+								// Category exists, grab all the jobs from that category
+								dataService.getJobs(0, currentCat.id).then(function(jobs) {
+									jobsQ.resolve(jobs);
+								})
+							}
+						})
+
+						return jobsQ.promise;
 					},
 					menu: function(dataService) {
 						return dataService.getMenu();
@@ -26,7 +41,7 @@
 				}
 			})
 			.when('/job/:job', {
-				templateUrl: 'partials/jobs-detail.html',
+				templateUrl: '/partials/jobs-detail.html',
 				controller: 'JobsDetailController',
 				resolve: {
 					job: function($route, dataService) {
@@ -42,7 +57,7 @@
 				redirectTo: '/#new'
 			})
 			.when('/404', {
-				templateUrl: 'partials/jobs-detail.html',
+				templateUrl: '/partials/jobs-detail.html',
 				controller: 'NotFoundController',
 				resolve: {
 					menu: function(dataService) {
@@ -54,5 +69,5 @@
 			.otherwise({
 				redirectTo: '/404'
 			})
-	})
+	}])
 })();

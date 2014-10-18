@@ -9,7 +9,7 @@
 			},
 			controller: function($scope) {
 				dataService.getMenu().then(function(data) {
-					$scope.links = data;
+					$scope.links = _.reject(data, {hideFromEditable: true});
 
 					$scope.selectedLink = $scope.links[0];
 					$scope.selected = $scope.selectedLink;
