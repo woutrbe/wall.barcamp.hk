@@ -29,9 +29,10 @@ gulp.task('build', function() {
 		'clean-build',
 		'sass',
 		[
-			'compile-templates',
-			'usemin'
-		]
+			'usemin',
+			'compile-templates'
+		],
+		'copy-images'
 	)
 })
 
@@ -58,16 +59,23 @@ gulp.task('connect-dist', function() {
 	})
 })
 
+// Clean the build folder
 gulp.task('clean-build', function() {
 	return gulp.src(buildDir)
 				.pipe(clean());
+})
+
+// Copy images to the build folder
+gulp.task('copy-images', function() {
+	return gulp.src(clientDir + '/img/*.*')
+				.pipe(gulp.dest(buildDir + '/img'));
 })
 
 // usemin
 gulp.task('usemin', function() {
 	return gulp.src(clientDir + '/index.html')
 				.pipe(usemin({
-					js: [uglify()],
+					js: [],
 					css: [minifyCSS({
 						keepSpecialComments: 0
 					})]
@@ -78,15 +86,15 @@ gulp.task('usemin', function() {
 // Compile angular templates to javascript
 gulp.task('compile-templates', function() {
 	return gulp.src([
-					clientDir + '/partials/*.html',
-					clientDir + '/scripts/**/*.html'
+					clientDir + '/**/*.html',
+					'!' + clientDir + '/scripts/libs/**/*.html',
+					'!' + clientDir + '/index.html'
 				])
 			.pipe(ngHtml2Js({
-				moduleName: 'wall.partials',
-				prefix: ''
+				moduleName: 'wall.partials'
 			}))
 			.pipe(concat('partials.min.js'))
-			// .pipe(uglify())
+			.pipe(uglify())
 			.pipe(gulp.dest(buildDir + '/scripts'))
 })
 

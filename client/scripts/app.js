@@ -8,6 +8,7 @@
 			'wall.addJobModule',
 			'wall.menuSelectModule',
 			'wall.notFound',
+			'wall.partials'
 		]);
 	app.run(function() {
 		// Initialize oAuth
@@ -18,6 +19,10 @@
 		// });
 	})
 
-	app.controller('WallController', function() {
-	})
+	// Setup for partials that are compiled during the build process
+	try {
+		var partials = angular.module('wall.partials');
+	} catch (e) {
+		var partials = angular.module('wall.partials', []);
+	}
 })();
