@@ -1,3 +1,4 @@
 /scripts/libs
 /node_modules
 npm-debug.log
+/build
