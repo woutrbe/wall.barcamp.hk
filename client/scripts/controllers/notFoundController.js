@@ -12,6 +12,6 @@
 				safeLink: "admin-notice",
 				link: "Admin Notice"
 			}
-		}
-	}])
+		};
+	}]);
 })();

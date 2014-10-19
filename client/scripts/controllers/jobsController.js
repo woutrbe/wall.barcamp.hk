@@ -10,7 +10,7 @@
 		$scope.$on('$routeUpdate',function(){
 			console.log($location.search());
 			console.log($location.hash());
-		})
+		});
 
 		// Match our jobs with the corresponding menu item
 		$scope.matchJobWithMenu = function(jobs, menu) {
@@ -23,7 +23,7 @@
 
 				$scope.jobs.push(tmpJob);
 			}
-		}
+		};
 		
 		$scope.matchJobWithMenu(tmpJobs, menu);
 
@@ -38,17 +38,17 @@
 				editable: true,
 				removeable: false,
 				prepend: true
-			}
+			};
 
 			// 2. Add the new job to our array of jobs
 			$scope.jobs.unshift(newJob);
-		})
+		});
 
 		// Listen to the wall.removeJob event
 		$rootScope.$on('wall.removeJob', function(event, job) {
 			// 1. Return a new jobs array without the given job
 			$scope.jobs = _.without($scope.jobs, job);
-		})
+		});
 
 		return $scope;
 	}]);

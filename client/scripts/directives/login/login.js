@@ -8,6 +8,6 @@
 
 			},
 			controllerAs: 'loginCtrl'
-		}
-	})
+		};
+	});
 })();

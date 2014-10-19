@@ -17,11 +17,11 @@
 
 				$scope.update = function() {
 					$scope.selected = $scope.selectedLink;
-				}
+				};
 
 				return $scope;
 			},
 			controllerAs: 'menuSelectCtrl'
-		}
-	}])
+		};
+	}]);
 })();

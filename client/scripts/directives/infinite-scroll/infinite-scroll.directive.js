@@ -5,6 +5,6 @@
 			restrict: 'A',
 			scope: true,
 			controller: 'InfiniteScrollController'
-		}
-	}])
+		};
+	}]);
 })();

@@ -24,20 +24,20 @@
 				// Reset the array with items to add
 				$scope.itemsToAdd = [];
 			}, 10);
-		}
+		};
 
 		// Remove an element from the masonry container
 		$scope.removeFromMasonry = function(element) {
 			$scope.msnry.remove(element);
 			
 			$scope.layout();
-		}
+		};
 
 		// Trigger masonry layout
 		$scope.layout = function() {
 			$scope.msnry.layout();
-		}
+		};
 
 		return $scope;
-	}])
+	}]);
 })();

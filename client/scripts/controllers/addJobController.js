@@ -6,8 +6,8 @@
 			// Emit a "wall.newJob" event
 			// This will be caught in jobsController
 			$rootScope.$emit('wall.newJob');
-		}
+		};
 
 		return $scope;
-	})
+	});
 })();

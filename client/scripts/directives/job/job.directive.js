@@ -15,10 +15,10 @@
 				// Remove the element from the masonry grid
 				element.on('$destroy', function() {
 					ctrl.removeFromMasonry(element);
-				})
+				});
 			},
 			controller: 'JobController',
 			controllerAs: 'jobCtrl'
-		}
-	}])
+		};
+	}]);
 })();

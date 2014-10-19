@@ -11,5 +11,5 @@
 		$scope.job = job;
 		
 		return $scope;
-	}])
+	}]);
 })();

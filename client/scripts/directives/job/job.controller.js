@@ -82,7 +82,7 @@
 				$scope.setContent($scope.job);
 
 				$scope.$emit('wall.masonry.layout');
-			})
+			});
 		};
 
 		// Cancel creating a new post
@@ -158,5 +158,5 @@
 		};
 
 		return $scope;
-	}])
+	}]);
 })();

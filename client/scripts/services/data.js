@@ -25,7 +25,7 @@
 
 							_.each(links, function(link) {
 								link.safeLink = link.link.toLowerCase().replace(/ /g, '-');
-							})
+							});
 
 							// Add the "view all" link
 							links.unshift({
@@ -34,10 +34,10 @@
 								link: 'View all',
 								safeLink: 'all',
 								hideFromEditable: true
-							})
+							});
 
 							deferredMenu.resolve(links);
-						})
+						});
 					}
 
 					deferredMenuStarted = true;
@@ -61,7 +61,7 @@
 					jobs = data;
 
 					deferred.resolve(data);
-				})
+				});
 
 				return deferred.promise;
 			},
@@ -78,7 +78,7 @@
 					}
 				}).success(function(data) {
 					deferred.resolve(data);
-				})
+				});
 
 				return deferred.promise;
 			},
@@ -99,7 +99,7 @@
 					}
 				}).success(function(data) {
 					deferred.resolve(data);
-				})
+				});
 
 				return deferred.promise;
 			},
@@ -116,7 +116,7 @@
 					}
 				}).success(function(data) {
 					deferred.resolve(data);
-				})
+				});
 
 				return deferred.promise;
 			},
@@ -133,10 +133,10 @@
 					}
 				}).success(function(data) {
 					deferred.resolve(data);
-				})
+				});
 
 				return deferred.promise;
 			}
-		}
-	}])
+		};
+	}]);
 })();
