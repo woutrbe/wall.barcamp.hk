@@ -34,10 +34,10 @@ gulp.task('build', function() {
 
 // SASS
 gulp.task('sass', function() {
-	gulp.src(clientDir + '/css/scss/wall.scss')
-		.pipe(sass())
-		.pipe(gulp.dest(clientDir + '/css/'))
-		.pipe(connect.reload());
+	return gulp.src(clientDir + '/css/scss/wall.scss')
+			.pipe(sass())
+			.pipe(gulp.dest(clientDir + '/css/'))
+			.pipe(connect.reload());
 })
 
 // Connect to server

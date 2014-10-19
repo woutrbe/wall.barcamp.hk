@@ -2,7 +2,7 @@
 	var app = angular.module('wall.routes', ['ngRoute']);
 
 	app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-		$locationProvider.html5Mode(true);
+		// $locationProvider.html5Mode(true);
 
 		$routeProvider
 			// By default, redirect to /filter/all
@@ -10,7 +10,7 @@
 				redirectTo: '/filter/all'
 			})
 			.when('/filter/:filter', {
-				templateUrl: '/partials/jobs-list.html',
+				templateUrl: 'partials/jobs-list.html',
 				controller: 'JobsController',
 				resolve: {
 					tmpJobs: function($route, $q, $location, dataService) {
@@ -41,7 +41,7 @@
 				}
 			})
 			.when('/job/:job', {
-				templateUrl: '/partials/jobs-detail.html',
+				templateUrl: 'partials/jobs-detail.html',
 				controller: 'JobsDetailController',
 				resolve: {
 					job: function($route, dataService) {
@@ -57,7 +57,7 @@
 				redirectTo: '/#new'
 			})
 			.when('/404', {
-				templateUrl: '/partials/jobs-detail.html',
+				templateUrl: 'partials/jobs-detail.html',
 				controller: 'NotFoundController',
 				resolve: {
 					menu: function(dataService) {

@@ -31,7 +31,7 @@
 		// Set the content of a job posting
 		$scope.setContent = function(job) {
 			// Generate the link for this job
-			var jobLink = 'http://wall.barcamp.hk/job/' + job.jobLink;
+			var jobLink = 'http://wall.barcamp.hk/#/job/' + job.jobLink;
 
 			// Set twitter / mail links
 			$scope.twitterLink = 'http://twitter.com/home?status=' + job.content.substr(0, 50) + ' - ' + jobLink;
