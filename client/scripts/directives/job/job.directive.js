@@ -1,6 +1,6 @@
 (function() {
 	// Job directive
-	var app = angular.module('wall.jobModule', ['monospaced.elastic', 'wall.dataService']);
+	var app = angular.module('wall.jobModule', ['monospaced.elastic', 'wall.dataService', 'ngSanitize']);
 	app.directive('job', [function() {
 		return {
 			restrict: 'E',

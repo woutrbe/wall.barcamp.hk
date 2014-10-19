@@ -41,7 +41,7 @@
 			$scope.type = 'job--' + job.cat.safeLink;
 
 			// Set the content
-			$scope.content = $sce.trustAsHtml(job.content);
+			$scope.content = $sce.trustAsHtml(job.content.replace(/\n\r?/g, '<br />'));
 
 			// Set the timestamp (Rendered by angular)
 			$scope.timestamp = job.timestamp;

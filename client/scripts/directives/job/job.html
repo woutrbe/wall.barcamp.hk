@@ -34,9 +34,7 @@
 			</div>
 		</div>
 		<div ng-show="!editable">
-			<div class="job__body">
-				{{ content }}
-			</div>
+			<div class="job__body" ng-bind-html="content"></div>
 
 			<span class="job__date">Posted on {{ timestamp | date : "MMM d 'at' HH:mm" }}</span>
 		</div>

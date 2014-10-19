@@ -49,8 +49,13 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.9);
   padding: 45px 25px 20px 25px; }
 
-.job__body a {
-  color: #444444; }
+.job__body {
+  word-wrap: break-word;
+  white-space: pre-wrap; }
+  .job__body a {
+    color: #444444; }
+    .job__body a:hover {
+      color: white; }
 
 .job__create-btn {
   font-size: 11px;

@@ -67,8 +67,15 @@
 		padding: 45px 25px 20px 25px;
 	}
 	.job__body {
+		word-wrap: break-word;
+		white-space: pre-wrap;
+		
 		a {
 			color: rgb(68, 68, 68);
+
+			&:hover {
+				color: rgb(255, 255, 255);
+			}
 		}
 	}
 
