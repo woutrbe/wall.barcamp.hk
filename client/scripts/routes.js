@@ -29,9 +29,9 @@
 								// Category exists, grab all the jobs from that category
 								dataService.getJobs(0, currentCat.id).then(function(jobs) {
 									jobsQ.resolve(jobs);
-								})
+								});
 							}
-						})
+						});
 
 						return jobsQ.promise;
 					},
@@ -68,6 +68,6 @@
 			// Redirect to 404 page in case of anything else
 			.otherwise({
 				redirectTo: '/404'
-			})
-	}])
+			});
+	}]);
 })();

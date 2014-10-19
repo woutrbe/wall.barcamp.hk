@@ -17,7 +17,7 @@
 		// 	console.log(error);
 		// 	console.log(success);
 		// });
-	})
+	});
 
 	// Setup for partials that are compiled during the build process
 	try {

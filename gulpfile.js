@@ -7,7 +7,8 @@ var gulp 		= require('gulp'),
 	clean		= require('gulp-clean'),
 	runSequence	= require('run-sequence'),
 	minifyCSS	= require('gulp-minify-css'),
-	concat		= require("gulp-concat");
+	concat		= require('gulp-concat'),
+	jshint		= require('gulp-jshint');
 
 var buildDir 	= './build',
 	clientDir 	= './client';
@@ -94,5 +95,15 @@ gulp.task('compile-templates', function() {
 			.pipe(gulp.dest(buildDir + '/scripts'))
 })
 
+// JSHint - Check for JS code quality
+gulp.task('jshint', function() {
+	return gulp.src([
+					clientDir + '/scripts/**/*.js',
+					'!' + clientDir + '/scripts/libs/**/*.js'
+				])
+				.pipe(jshint())
+				.pipe(jshint.reporter('default'));
+})
+
 // CI
-gulp.task('ci', ['build']);
+gulp.task('ci', ['jshint', 'build']);

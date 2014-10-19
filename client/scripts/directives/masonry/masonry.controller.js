@@ -23,7 +23,7 @@
 
 				// Reset the array with items to add
 				$scope.itemsToAdd = [];
-			}, 100);
+			}, 10);
 		}
 
 		// Remove an element from the masonry container

@@ -22,11 +22,11 @@
 						// Set the maximum characters
 						$scope.maxChars = $scope.selectedMenu.length;
 					}	
-				})
+				});
 			} else {
 				$scope.setContent($scope.job);
 			}
-		}
+		};
 
 		// Set the content of a job posting
 		$scope.setContent = function(job) {
@@ -45,24 +45,24 @@
 
 			// Set the timestamp (Rendered by angular)
 			$scope.timestamp = job.timestamp;
-		}
+		};
 
 		$scope.init();
 
 		$scope.createEditableJob = function() {
 
-		}
+		};
 
 		// Remove a job
 		$scope.trash = function() {
 			$scope.removeable = true;
 			$scope.toolbar = false;
-		}
+		};
 		// Flag a job
 		$scope.flag = function() {
 			$scope.flagable = true;
 			$scope.toolbar = false;
-		}	
+		};
 
 		// Create a new post
 		$scope.createPost = function() {
@@ -83,20 +83,20 @@
 
 				$scope.$emit('wall.masonry.layout');
 			})
-		}
+		};
 
 		// Cancel creating a new post
 		$scope.cancelPost = function() {
 			$rootScope.$emit('wall.removeJob', $scope.job);
-		}
+		};
 
 		// Show / hide tooltip for jobs
 		$scope.showTips = function() {
 			$scope.expanded = true;
-		}
+		};
 		$scope.hideTips = function() {
 			$scope.expanded = false;
-		}
+		};
 
 		// Handling for removing posts
 		$scope.confirmRemove = function() {
@@ -109,15 +109,15 @@
 					$scope.removeContent = "Sorry, something went wrong, please try again later.";
 					$scope.removeFailed = true;
 				}
-			})
-		}
+			});
+		};
 		$scope.cancelRemove = function() {
 			$scope.removeable = false;
 			$scope.toolbar = true;
 
 			$scope.removeContent = "Are you sure you want to remove this post?";
 			$scope.removeFailed = false;
-		}
+		};
 
 		// Handling for flagging posts
 		$scope.confirmFlag = function() {
@@ -135,27 +135,27 @@
 					$scope.flagContent = "Sorry, something went wrong, please try again later.";
 					$scope.flagFailed = true;
 				}
-			})
-		}
+			});
+		};
 		$scope.cancelFlag = function() {
 			$scope.flagable = false;
 			$scope.toolbar = true;
 
 			$scope.flagContent = "Are you sure you want to flag this post?";
 			$scope.flagFailed = false;
-		}
+		};
 
 		// Add an elemenent to the masonry container
 		// This will simply emit an event, which will be handled in masonry.directive
 		$scope.addToMasonry = function(element, prepend) {
 			$scope.$emit('wall.masonry.addToMasonry', element, prepend);
-		}
+		};
 
 		// Remove an element from the masonry container
 		// This will simply emit an event, which will be handled in masonry.directive
 		$scope.removeFromMasonry = function(element) {
 			$scope.$emit('wall.masonry.removeFromMasonry', element);
-		}
+		};
 
 		return $scope;
 	}])
