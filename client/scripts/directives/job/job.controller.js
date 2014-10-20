@@ -30,12 +30,30 @@
 
 		// Set the content of a job posting
 		$scope.setContent = function(job) {
+			// Generate a safe output (no HTML);
+			job.safeOutput = job.content.replace(/<\/?[^>]+>/gi, '');
+
+			// Look for the [img] tag and apply it as the background image
+			var img = new RegExp(/\[img\](.*?)\[\/img\]/),
+				match = job.safeOutput.match(img);
+
+			if(match) {
+				job.content = job.content.replace(img, '');
+				console.log(match[1]);
+
+				$scope.jobBackground = {
+					'background': 'url(' + match[1] + ') 100% 100% no-repeat'
+				}
+
+				console.log($scope.jobBackground);
+			}
+
 			// Generate the link for this job
 			var jobLink = 'http://wall.barcamp.hk/#/job/' + job.jobLink;
 
 			// Set twitter / mail links
-			$scope.twitterLink = 'http://twitter.com/home?status=' + job.content.substr(0, 50) + ' - ' + jobLink;
-			$scope.mailLink = 'mailto:?body=' + job.content + ' - ' + jobLink;
+			$scope.twitterLink = 'http://twitter.com/home?status=' + job.safeOutput.substr(0, 50) + ' - ' + jobLink;
+			$scope.mailLink = 'mailto:?body=' + job.safeOutput + ' - ' + jobLink;
 
 			// Set the job type as a class
 			$scope.type = 'job--' + job.cat.safeLink;
