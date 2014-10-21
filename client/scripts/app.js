@@ -13,14 +13,23 @@
 			'wall.loginService'
 		]);
 	app.run(function(loginService) {
-		console.log(loginService);
+		loginService.init();
 
-		// Initialize oAuth
-		// OAuth.initialize('dptmdeRHa1H18PwexEmhVUcP4OU')
-		// OAuth.popup('twitter', function(error, success) {
-		// 	console.log(error);
-		// 	console.log(success);
-		// });
+		loginService.check().then(function(data) {
+			console.log(data);
+		})
+
+		loginService.getServerState().then(function(state) {
+			console.log(state);
+
+			loginService.login('twitter').then(function(data) {
+				console.log(data);
+
+				loginService.check().then(function(data) {
+					console.log(data);
+				})
+			})
+		})
 	});
 
 	// Setup for partials that are compiled during the build process

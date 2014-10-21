@@ -405,7 +405,7 @@ class Jobs {
 				
 		return $content;
 	}
-	function emailize($text) {
+	static function emailize($text) {
 		$regex = '/(\S+@\S+\.\S+)/is';
 		$replace = "<a href='mailto:$1'>$1</a>";
 		
