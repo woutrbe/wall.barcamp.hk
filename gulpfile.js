@@ -13,8 +13,6 @@ var gulp 		= require('gulp'),
 var buildDir 	= './build',
 	clientDir 	= './client';
 
-gulp.task('dev', ['connect-dev', 'watch'])
-
 // WATCH
 gulp.task('watch', function() {
 	gulp.watch(clientDir + '/css/scss/**/*.scss', ['sass']);
@@ -51,7 +49,7 @@ gulp.task('connect-dev', function() {
 })
 gulp.task('connect-dist', function() {
 	connect.server({
-		root: '../dist',
+		root: 'build',
 		port: 3001
 	})
 })
@@ -106,4 +104,6 @@ gulp.task('jshint', function() {
 })
 
 // CI
-gulp.task('ci', ['jshint', 'build']);
+gulp.task('test', ['jshint']);
+gulp.task('ci', ['test', 'build']);
+gulp.task('dev', ['connect-dev', 'watch']);

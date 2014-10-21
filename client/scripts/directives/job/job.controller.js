@@ -38,14 +38,13 @@
 				match = job.safeOutput.match(img);
 
 			if(match) {
+				// Remove the [img] from our content
 				job.content = job.content.replace(img, '');
-				console.log(match[1]);
-
+				
+				// Set the background image
 				$scope.jobBackground = {
 					'background': 'url(' + match[1] + ') 100% 100% no-repeat'
-				}
-
-				console.log($scope.jobBackground);
+				};
 			}
 
 			// Generate the link for this job

@@ -8,9 +8,13 @@
 			'wall.addJobModule',
 			'wall.menuSelectModule',
 			'wall.notFound',
-			'wall.partials'
+			'wall.partials',
+
+			'wall.loginService'
 		]);
-	app.run(function() {
+	app.run(function(loginService) {
+		console.log(loginService);
+
 		// Initialize oAuth
 		// OAuth.initialize('dptmdeRHa1H18PwexEmhVUcP4OU')
 		// OAuth.popup('twitter', function(error, success) {
