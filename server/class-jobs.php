@@ -120,8 +120,8 @@ class Jobs {
 			if($stm->execute()) {
 				$stm->bind_result($userID);
 				while($stm->fetch()) {
-					if(isset($_SESSION['user']) && isset($_SESSION['user']['owner'])) {
-						if($_SESSION['user']['owner'] == 1 || $_SESSION['user']['userID'] == $userID) return true;
+					if(isset($_SESSION['wall_login']) && isset($_SESSION['wall_login']['owner'])) {
+						if($_SESSION['wall_login']['owner'] == 1 || $_SESSION['wall_login']['userID'] == $userID) return true;
 					}
 				}
 			}
@@ -180,7 +180,7 @@ class Jobs {
 		
 		$sql = 'INSERT INTO jobs (userID, catID, content, timestamp, link) VALUES(?, ?, ?, ?, ?)';
 		if($stm = $db->prepare($sql)) {
-			$userID = 1;
+			$userID = $_SESSION['wall_login']['userID'];
 			$link = uniqid();
 			
 			// cut content
@@ -194,15 +194,12 @@ class Jobs {
 			
 			$timestamp = time();
 			
-			/* if($_SESSION['user']['owner'] != 1) {
+			// Remove [img] tags if we're not the owner
+			if($_SESSION['wall_login']['owner'] != 1) {
 				$content = preg_replace('#\[img\](.*?)\[/img\]#is', '', $content);
-			} */
+			} 
 			
 			$content = htmlentities(strip_tags(str_replace(' ', '&nbsp;', nl2br($content))));
-			
-			// shorten url
-			//$content = preg_replace('!(((f|ht)tp://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!ie', 'self::shortenUrl("$1")', $content);
-			//$content = eregi_replace('([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&//=]+)/e', '\\1 self::shortenUrl("\\2")', $content);
 			
 			// do not remove whitespaces
 			$stm->bind_param('iisis', $userID, $catID, $content, $timestamp, $link);
@@ -228,7 +225,7 @@ class Jobs {
 		
 		$sql = 'INSERT INTO flags (jobID, userID) VALUES(?, ?)';
 		if($stm = $db->prepare($sql)) {
-			$stm->bind_param('ii', $jobID, $_SESSION['user']['userID']);
+			$stm->bind_param('ii', $jobID, $_SESSION['wall_login']['userID']);
 			if($stm->execute()) {
 				return true;
 			}
@@ -244,7 +241,7 @@ class Jobs {
 		
 		$sql = $sql = 'SELECT COUNT(id) FROM flags WHERE jobID = ? AND userID = ? LIMIT 1';
 		if($stm = $db->prepare($sql)) {
-			$stm->bind_param('ii', $jobID, $_SESSION['user']['userID']);
+			$stm->bind_param('ii', $jobID, $_SESSION['wall_login']['userID']);
 			if($stm->execute()) {
 				$stm->bind_result($count);
 				
@@ -330,7 +327,7 @@ class Jobs {
 			$stm->bind_param('i', $jobID);
 			$stm->execute();
 			
-			if($_SESSION['user']['owner'] != 5) {
+			if($_SESSION['wall_login']['owner'] != 5) {
 				$link = uniqid();
 				
 				$sql = 'INSERT INTO flagged_jobs (jobID, link) VALUES(?, ?)';
@@ -368,7 +365,7 @@ class Jobs {
 		$sql = 'SELECT COUNT(id) FROM flags WHERE jobID = ? AND userID = ? LIMIT 1';
 		
 		if($stm = $db->prepare($sql)) {
-			$stm->bind_param('ii', $jobID, $_SESSION['user']['userID']);
+			$stm->bind_param('ii', $jobID, $_SESSION['wall_login']['userID']);
 			if($stm->execute()) {
 				$stm->bind_result($count);
 				

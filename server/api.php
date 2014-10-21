@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
-if(!session_id()) session_start();
+session_start();
 
 require_once 'class-database.php';
 require_once 'class-jobs.php';
@@ -14,14 +14,18 @@ use OAuth_io\OAuth;
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 
+if(!isset($_SESSION['wall_login'])) $_SESSION['wall_login'] = array();
+
 if(isset($request->ajax)) {
-	$oauth = new OAuth($_SESSION['wall_login']);
+	$oauth = new OAuth();
 	$oauth->initialize('dptmdeRHa1H18PwexEmhVUcP4OU', 'IsEjKCs96IgLUtxzZIjH0RBdlSs');
 
 	switch($request->action) {
 		// OAuth
 		case 'check':
 			// Check if we're already logged in
+			// $oauth->auth('twitter');
+
 			echo json_encode($_SESSION['wall_login']);
 
 			break;
@@ -56,6 +60,8 @@ if(isset($request->ajax)) {
 				// User doesn't exist, create a new one
 				$real_user = User::createUser($request->service, $user['raw']['id'], $user['name'], $user['avatar'], $user['email']);
 			}
+
+			$_SESSION['wall_login'] = $real_user;
 
 			echo json_encode($real_user);
 
@@ -100,7 +106,7 @@ if(isset($request->ajax)) {
 			
 			if(Jobs::flagJob($jobID)) {
 				// instant hide when owner
-				if($_SESSION['user']['owner'] == 1 && Jobs::checkJobForFlags($jobID) > 0) {
+				if($_SESSION['wall_login']['owner'] == 1 && Jobs::checkJobForFlags($jobID) > 0) {
 					Jobs::hideJob($jobID);
 					echo 'true';
 				} elseif(Jobs::checkJobForFlags($jobID) >= 5) {

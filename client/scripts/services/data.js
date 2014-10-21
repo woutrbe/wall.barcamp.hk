@@ -8,6 +8,11 @@
 			deferredMenu = $q.defer();
 
 		return {
+			/**
+			 * Get all the different categories
+			 *
+			 * @return promise
+			 */
 			getMenu: function() {
 				if(links.length > 0) {
 					deferredMenu.resolve(links);
@@ -45,6 +50,15 @@
 
 				return deferredMenu.promise;
 			},
+
+			/**
+			 * Get all the jobs
+			 *
+			 * @param {Int} Page
+			 * @param {Int} Category
+			 *
+			 * @return promise
+			 */
 			getJobs: function(page, cat) {
 				var deferred = $q.defer();
 
@@ -65,6 +79,14 @@
 
 				return deferred.promise;
 			},
+
+			/**
+			 * Get a specific job
+			 *
+			 * @param {String} Job link
+			 *
+			 * @return promise
+			 */
 			getJob: function(link) {
 				var deferred = $q.defer();
 
@@ -82,6 +104,15 @@
 
 				return deferred.promise;
 			},
+
+			/**
+			 * Create a new job
+			 *
+			 * @param {String} Content
+			 * @param {Int} Category id
+			 *
+			 * @return promise
+			 */
 			saveJob: function(content, catID) {
 				var deferred = $q.defer();
 
@@ -103,6 +134,14 @@
 
 				return deferred.promise;
 			},
+
+			/**
+			 * Remove a job
+			 *
+			 * @param {Object} Job
+			 *
+			 * @return promise
+			 */
 			removeJob: function(job) {
 				var deferred = $q.defer();
 
@@ -120,6 +159,14 @@
 
 				return deferred.promise;
 			},
+
+			/**
+			 * Flag a job for removal
+			 *
+			 * @param {Object} Job
+			 *
+			 * @return promise
+			 */
 			flagJob: function(job) {
 				var deferred = $q.defer();
 

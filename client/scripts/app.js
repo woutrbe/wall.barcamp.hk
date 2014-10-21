@@ -15,6 +15,7 @@
 	app.run(function(loginService) {
 		loginService.init();
 
+		// On startup check if we are logged in already
 		loginService.check().then(function(data) {
 			console.log(data);
 		})

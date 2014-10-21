@@ -4,17 +4,7 @@ Class User {
 	}
 	public static function logout() {
 		session_destroy();
-	}
-	public static function isLoggedIn() {
-		if(isset($_SESSION['user'])) {
-			if(isset($_SESSION['user']['userID'])) {
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
+	}	
 	public static function getUserID($network, $key) {
 		$db = Database::getDB();
 		
