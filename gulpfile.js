@@ -8,8 +8,7 @@ var gulp 		= require('gulp'),
 	runSequence	= require('run-sequence'),
 	minifyCSS	= require('gulp-minify-css'),
 	concat		= require('gulp-concat'),
-	jshint		= require('gulp-jshint'),
-	zip			= require('gulp-zip');
+	jshint		= require('gulp-jshint');
 
 var buildDir 	= './build',
 	clientDir 	= './client';
