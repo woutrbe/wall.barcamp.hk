@@ -4,13 +4,5 @@ node_js:
 before_install:
 - npm install
 - bower install
-- bundle install
 script:
 - gulp ci
-after_success: bundle exec travis-custom-deploy sftp build/
-env:
-  global:
-  - secure: TUdFrzCy9AiMI0gD9b6JHw4f120WfSzeskxDuN8fMgJzd8yjJXNV9yATLSXfqJvAPJmnPWw3cN3XuRilI498mkHfqrVdOSKo+SzFCIo/nQfbYryQ+q7QgsrnrhSFI1A3SYgowdp+9/ENCQH6XS6dK1Cxx2qa6X9SgTvEfjhybIM=
-  - secure: cnajtEEIW7IZsv/rRzgqnf+1WY0QKQhyi1UCdg3FJ+GTVlwIzqprOiUtZUJiNc4DtECPk9DhMAYFa6W29Rl3MFOUwSyxWBnWyFC5vcBS8FaIQIgsXyXhuV3H7M0KRq2GGYfC2Wrgz2gkVHbwJ782yMyFVWCtAKMRgLNaDYupXXA=
-  - secure: jbxBZyAnWMg79Dvmw17wq74tAWwvNvX9Ldw94824xyfMFfLG1Z3GJA75svJ7mWuxwM98PaW+L9oYKXwXl9UyceAMFLAFmqsPpnKkiftDcIOLXxllDBs0lAV/AYGYU8QCzFhFhEPAijNjH0wgrAIErvIPcPqXAlqZMTvjrlQLO+Y=
-  - secure: X0LwhKHy57JiwJstwj0xxzoUviIZIJjQYrC8tflhqJXMfTeXnVdWppOYRG+eWWrNiaY8MrNBnEFFY8l3R7LsSde2zgTCCyD5PMvvjFYtQTSnTUIFiRn6qTmMfZkQXuqVEQD+xfotWD9nDuDjcB2C41ssI2PJ0O9n9n5SQcggKpk=

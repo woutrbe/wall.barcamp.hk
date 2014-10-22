@@ -101,13 +101,6 @@ gulp.task('compile-templates', function() {
 			.pipe(gulp.dest(buildDir + '/scripts'))
 })
 
-// Create a zip file of the build directory
-gulp.task('zip', function() {
-	return gulp.src(buildDir + '/**/*.*')
-				.pipe(zip('build.zip'))
-				.pipe(gulp.dest(buildDir))
-})
-
 // Upload the build to an SFTP server
 gulp.task('upload-build', function() {
 
