@@ -29,27 +29,19 @@
 			check: function() {
 				var deferred = $q.defer();
 
-				// If we have already have a user stored, return it
-				if(user) {
-					deferred.resolve(user);
+				// Check on the server if the user is logged in
+				$http({
+					method: 'POST',
+					url: api,
+					data: {
+						ajax: true,
+						action: 'check'
+					}
+				}).success(function(data) {
+					deferred.resolve(data);
 
-					// Send out an event to the rootscope with the user
-					$rootScope.$emit('wall.login', user);
-				} else {
-					// Check on the server if the user is logged in
-					$http({
-						method: 'POST',
-						url: api,
-						data: {
-							ajax: true,
-							action: 'check'
-						}
-					}).success(function(data) {
-						deferred.resolve(data);
-
-						setUser(data);
-					})
-				}
+					setUser(data);
+				})
 
 				return deferred.promise;
 			},

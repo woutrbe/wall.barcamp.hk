@@ -261,3 +261,29 @@ body {
     text-decoration: none; }
     .navigation a:hover {
       color: white; }
+
+.user-info {
+  margin: 0 0 0 20px;
+  display: block; }
+  .user-info:after {
+    content: '';
+    display: block;
+    clear: both; }
+
+.user-image {
+  width: 22px;
+  height: 22px;
+  float: left; }
+
+.user-name {
+  float: left;
+  width: 190px;
+  padding: 6px 0 0 10px;
+  font-size: 11px; }
+  .user-name > a {
+    display: none;
+    color: #f25a95; }
+  .user-name:hover > span {
+    display: none; }
+  .user-name:hover > a {
+    display: block; }

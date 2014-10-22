@@ -1,0 +1,37 @@
+.user-info {
+	margin: 0 0 0 20px;
+	display: block;
+
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+	.user-image {
+		width: 22px;
+		height: 22px;
+
+		float: left;
+	}
+	.user-name {
+		float: left;
+		width: 190px;
+
+		padding: 6px 0 0 10px;
+		font-size: 11px;
+
+		> a {
+			display: none;
+			color: $job-admin-notice;
+		}
+
+		&:hover {
+			> span {
+				display: none;
+			}
+			> a {
+				display: block;
+			}
+		}
+	}

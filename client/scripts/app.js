@@ -8,6 +8,7 @@
 			'wall.addJobModule',
 			'wall.menuSelectModule',
 			'wall.notFound',
+			'wall.userInfo',
 			'wall.partials',
 
 			'wall.loginService'
