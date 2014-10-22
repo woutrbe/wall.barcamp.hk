@@ -6,7 +6,7 @@ before_install:
   - bower install
 script:
   - gulp ci
-after_success: "curl --ftp-create-dirs -T /build -u $FTP_USER:$FTP_PASSWORD sftp://209.20.80.138/public_html/wall.barcamp.hk/www/test/"
+after_success: "curl --ftp-create-dirs -T build/ -u $FTP_USER:$FTP_PASSWORD sftp://209.20.80.138/public_html/wall.barcamp.hk/www/test/"
 env:
   global:
   - secure: i7PNAAeuhe8fEuXHoPcR9Rx+WVcEGpExJ5CoPQ5CH52vpYUSntxxQvDuwzZWlbQCiKjCvV6yLUisqjc09Vf9gL0SNBa8c8UjJJBkglDB/t6lE9dnpsuuOWfWZWTWPCrJyinjF+Jov9PrQBB3vk/assRyJrFG0guZAGQQaruTF2U=
