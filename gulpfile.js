@@ -29,8 +29,7 @@ gulp.task('build', function() {
 			'compile-templates'
 		],
 		'copy-server',
-		'copy-images',
-		'zip'
+		'copy-images'
 	)
 })
 
