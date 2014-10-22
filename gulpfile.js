@@ -8,7 +8,8 @@ var gulp 		= require('gulp'),
 	runSequence	= require('run-sequence'),
 	minifyCSS	= require('gulp-minify-css'),
 	concat		= require('gulp-concat'),
-	jshint		= require('gulp-jshint');
+	jshint		= require('gulp-jshint'),
+	zip			= require('gulp-zip');
 
 var buildDir 	= './build',
 	clientDir 	= './client';
@@ -28,7 +29,8 @@ gulp.task('build', function() {
 			'compile-templates'
 		],
 		'copy-server',
-		'copy-images'
+		'copy-images',
+		'zip'
 	)
 })
 
@@ -98,6 +100,18 @@ gulp.task('compile-templates', function() {
 			.pipe(concat('partials.min.js'))
 			.pipe(uglify())
 			.pipe(gulp.dest(buildDir + '/scripts'))
+})
+
+// Create a zip file of the build directory
+gulp.task('zip', function() {
+	return gulp.src(buildDir + '/**/*.*')
+				.pipe(zip('build.zip'))
+				.pipe(gulp.dest(buildDir))
+})
+
+// Upload the build to an SFTP server
+gulp.task('upload-build', function() {
+
 })
 
 // JSHint - Check for JS code quality
