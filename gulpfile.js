@@ -27,6 +27,7 @@ gulp.task('build', function() {
 			'usemin',
 			'compile-templates'
 		],
+		'copy-server',
 		'copy-images'
 	)
 })
@@ -64,6 +65,12 @@ gulp.task('clean-build', function() {
 gulp.task('copy-images', function() {
 	return gulp.src(clientDir + '/img/*.*')
 				.pipe(gulp.dest(buildDir + '/img'));
+})
+
+// Copy all server files to the build folder
+gulp.task('copy-server', function() {
+	return gulp.src('./server/**/*.*')
+				.pipe(gulp.dest(buildDir + '/server'));
 })
 
 // usemin

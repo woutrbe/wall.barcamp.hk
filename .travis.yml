@@ -1,10 +1,13 @@
 language: node_js
-node_js: 
+node_js:
   - 0.11
-
 before_install:
   - npm install
   - bower install
-
-script: 
+script:
   - gulp ci
+after_success: "curl --ftp-create-dirs -T uploadfilename -u $FTP_USER:$FTP_PASSWORD sftp://209.20.80.138/public_html/wall.barcamp.hk/www/test/"
+env:
+  global:
+  - secure: i7PNAAeuhe8fEuXHoPcR9Rx+WVcEGpExJ5CoPQ5CH52vpYUSntxxQvDuwzZWlbQCiKjCvV6yLUisqjc09Vf9gL0SNBa8c8UjJJBkglDB/t6lE9dnpsuuOWfWZWTWPCrJyinjF+Jov9PrQBB3vk/assRyJrFG0guZAGQQaruTF2U=
+  - secure: bwHsuZGxATCykCxoo60t1ffjJx8rCup6LhSbEINuIVwfPfdOFsuIVM1AnYbzGRfvHtHlaKekrYVaxZiwji0s+BzopS8cN9h8K5noQsCNBaft+M0DCs/33fGBcHRNuwO9GNpYnzDNzjGpHvDB/OIJvmeruhJ75SII0rDB91srCYI=

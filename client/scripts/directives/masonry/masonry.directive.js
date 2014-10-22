@@ -5,10 +5,7 @@
 			restrict: 'A',
 			scope: true,
 			link: function(scope, element, attrs, ctrl) {
-				scope.msnry = new Masonry(element[0], {
-					itemSelector: '.job-container'
-				});
-
+				scope.msnryContainer = element;
 				scope.$on('wall.masonry.addToMasonry', function(event, element, prepend) {
 					ctrl.addToMasonry(element, prepend);
 				});

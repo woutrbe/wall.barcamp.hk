@@ -13,13 +13,19 @@
 			$scope.itemsToAdd.push(element[0]);
 
 			$scope.addTimeout = window.setTimeout(function() {
-				if($scope.prepend) {
-					$scope.msnry.prepended($scope.itemsToAdd);
-				} else {
-					$scope.msnry.appended($scope.itemsToAdd);
-				}
+				if($scope.msnry) {
+					if($scope.prepend) {
+						$scope.msnry.prepended($scope.itemsToAdd);
+					} else {
+						$scope.msnry.appended($scope.itemsToAdd);
+					}
 
-				$scope.layout();
+					$scope.layout();
+				} else {
+					$scope.msnry = new Masonry($scope.msnryContainer[0], {
+						itemSelector: '.job-container'
+					});
+				}
 
 				// Reset the array with items to add
 				$scope.itemsToAdd = [];

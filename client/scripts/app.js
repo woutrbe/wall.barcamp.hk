@@ -16,22 +16,17 @@
 	app.run(function(loginService) {
 		loginService.init();
 
-		// On startup check if we are logged in already
-		loginService.check().then(function(data) {
-			console.log(data);
-		})
+		// loginService.getServerState().then(function(state) {
+		// 	console.log(state);
 
-		loginService.getServerState().then(function(state) {
-			console.log(state);
+		// 	loginService.login('twitter').then(function(data) {
+		// 		console.log(data);
 
-			loginService.login('twitter').then(function(data) {
-				console.log(data);
-
-				loginService.check().then(function(data) {
-					console.log(data);
-				})
-			})
-		})
+		// 		loginService.check().then(function(data) {
+		// 			console.log(data);
+		// 		})
+		// 	})
+		// })
 	});
 
 	// Setup for partials that are compiled during the build process
