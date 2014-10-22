@@ -4,7 +4,7 @@
 		// On startup check if we are logged in already
 		loginService.check().then(function(data) {
 			console.log(data);
-		})
+		});
 
 		$scope.isLoggedIn = false;
 
@@ -12,11 +12,11 @@
 			$scope.isLoggedIn = true;
 
 			$scope.user = user;
-		}
+		};
 		$scope.onLogout = function() {
 			$scope.isLoggedIn = false;
-		}
+		};
 
 		return $scope;
-	}])
+	}]);
 })();
