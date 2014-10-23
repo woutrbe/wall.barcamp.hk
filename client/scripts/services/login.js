@@ -9,7 +9,11 @@
 				user = data;
 
 				// Send out an event to the rootscope with the user
-				$rootScope.$emit('wall.login', user);
+				if(user === null) {
+					$rootScope.$emit('wall.logout', user);
+				} else {
+					$rootScope.$emit('wall.login', user);
+				}
 			}
 
 		return {
@@ -38,9 +42,9 @@
 						action: 'check'
 					}
 				}).success(function(data) {
-					deferred.resolve(data);
+					if(data !== 'false') setUser(data);
 
-					setUser(data);
+					deferred.resolve(data);
 				})
 
 				return deferred.promise;
@@ -102,6 +106,30 @@
 						});
 					}
 				});
+
+				return deferred.promise;
+			},
+
+			/**
+			 * Perform a login on the server via OAuth
+			 *
+			 * @return promise
+			 */
+			logout: function() {
+				var deferred = $q.defer();
+
+				$http({
+					method: 'POST',
+					url: api,
+					data: {
+						ajax: true,
+						action: 'logout'
+					}
+				}).success(function(data) {
+					deferred.resolve(data);
+
+					setUser(null);
+				})
 
 				return deferred.promise;
 			}

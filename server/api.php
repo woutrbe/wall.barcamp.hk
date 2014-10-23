@@ -14,7 +14,7 @@ use OAuth_io\OAuth;
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 
-if(!isset($_SESSION['wall_login'])) $_SESSION['wall_login'] = array();
+if(!isset($_SESSION['wall_login'])) $_SESSION['wall_login'] = null;
 
 if(isset($request->ajax)) {
 	$oauth = new OAuth();
@@ -23,10 +23,11 @@ if(isset($request->ajax)) {
 	switch($request->action) {
 		// OAuth
 		case 'check':
-			// Check if we're already logged in
-			// $oauth->auth('twitter');
-
-			echo json_encode($_SESSION['wall_login']);
+			if(isset($_SESSION['wall_login'])) {
+				echo json_encode($_SESSION['wall_login']);
+			} else {
+				echo 'false';
+			}			
 
 			break;
 		case 'logout':
