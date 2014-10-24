@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.notFound', []);
 
 	app.controller('NotFoundController', ['$scope', '$rootScope', function($scope, $rootScope) {
@@ -14,4 +14,4 @@
 			}
 		};
 	}]);
-})();
+})(window, window.angular);

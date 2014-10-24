@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.userInfo');
 	app.controller('UserInfoController', ['$scope', '$rootScope', 'loginService', function($scope, $rootScope, loginService) {
 		// On startup check if we are logged in already
@@ -21,4 +21,4 @@
 
 		return $scope;
 	}]);
-})();
+})(window, window.angular);

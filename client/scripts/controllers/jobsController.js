@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.jobsModule', [
 		'wall.dataService',
 		'wall.masonry'
@@ -24,6 +24,12 @@
 				$scope.jobs.push(tmpJob);
 			}
 		};
+
+		// Triggered by the infinitife scroll directive
+		// This handles loading of more jobs
+		$scope.loadMore = function() {
+
+		}
 		
 		$scope.matchJobWithMenu(tmpJobs, menu);
 
@@ -42,6 +48,7 @@
 
 			// 2. Add the new job to our array of jobs
 			$scope.jobs.unshift(newJob);
+			$scope.$apply();
 		});
 
 		// Listen to the wall.removeJob event
@@ -52,4 +59,4 @@
 
 		return $scope;
 	}]);
-})();
+})(window, window.angular);

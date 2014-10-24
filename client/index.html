@@ -12,8 +12,8 @@
 		<!-- endbuild -->
 	</head>
 
-	<body>
-		<a class="addJob" ng-click="addNewJob()" ng-controller="AddJobController"></a>
+	<body ng-controller="WallController">
+		<a class="addJob" require-login="addNewJob()"></a>
 
 		<div class="sidebar">
 			<user-info class="user-info"></user-info>
@@ -32,9 +32,11 @@
 			<menu class="main-nav"></menu>
 		</div>
 
+		<faq></faq>
+
 		<div class="footer">
-			<a href="">FAQ</a>
-			<a href="">Back to top</a>
+			<a ng-click="showFaq()">FAQ</a>
+			<a ng-click="scrollTop()">Back to top</a>
 		</div>
 
 		<div ng-view></div>
@@ -64,19 +66,25 @@
 		<script type="text/javascript" src="scripts/directives/user-info/user-info.directive.js"></script>
 		<script type="text/javascript" src="scripts/directives/user-info/user-info.controller.js"></script>
 
-		<script type="text/javascript" src="scripts/directives/login/login.js"></script>
+		<script type="text/javascript" src="scripts/directives/login/login.directive.js"></script>
+		<script type="text/javascript" src="scripts/directives/login/login.controller.js"></script>
+
 		<script type="text/javascript" src="scripts/directives/menu/menu.js"></script>
 		<script type="text/javascript" src="scripts/directives/menu-select/menu-select.js"></script>
 
 		<script type="text/javascript" src="scripts/directives/masonry/masonry.directive.js"></script>
 		<script type="text/javascript" src="scripts/directives/masonry/masonry.controller.js"></script>
 
-		<script type="text/javascript" src="scripts/directives/infinite-scroll/infinite-scroll.directive.js"></script>
-		<script type="text/javascript" src="scripts/directives/infinite-scroll/infinite-scroll.controller.js"></script>
+		<script type="text/javascript" src="scripts/directives/faq/faq.directive.js"></script>
+		<script type="text/javascript" src="scripts/directives/faq/faq.controller.js"></script>
 
+		<script type="text/javascript" src="scripts/directives/infinite-scroll/infinite-scroll.directive.js"></script>
+
+		<script type="text/javascript" src="scripts/directives/require-login/require-login.directive.js"></script>
+
+		<script type="text/javascript" src="scripts/controllers/wallController.js"></script>
 		<script type="text/javascript" src="scripts/controllers/jobsController.js"></script>
 		<script type="text/javascript" src="scripts/controllers/jobsDetailController.js"></script>
-		<script type="text/javascript" src="scripts/controllers/addJobController.js"></script>
 		<script type="text/javascript" src="scripts/controllers/notFoundController.js"></script>
 
 		<script type="text/javascript" src="scripts/services/data.js"></script>

@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.routes', ['ngRoute']);
 
 	app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -70,4 +70,4 @@
 				redirectTo: '/404'
 			});
 	}]);
-})();
+})(window, window.angular);

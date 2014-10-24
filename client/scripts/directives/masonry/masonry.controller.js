@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.masonry');
 	app.controller('MasonryController', ['$scope', function($scope, $rootScope) {
 		$scope.addTimeout = null;
@@ -46,4 +46,4 @@
 
 		return $scope;
 	}]);
-})();
+})(window, window.angular);

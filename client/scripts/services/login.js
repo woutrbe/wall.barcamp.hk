@@ -1,9 +1,11 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.loginService', []);
 	app.factory('loginService', ['$http', '$rootScope', '$q', function($http, $rootScope, $q) {
 		var api = 'http://localhost/wall.barcamp.hk/server/api.php',
 			serverState = null,
 			user = null;
+
+			
 
 			function setUser(data) {
 				user = data;
@@ -135,4 +137,4 @@
 			}
 		};
 	}]);
-})();
+})(window, window.angular);

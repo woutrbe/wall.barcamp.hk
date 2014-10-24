@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.masonry', []);
 	app.directive('masonry', [function() {
 		return {
@@ -21,4 +21,4 @@
 			controller: 'MasonryController'
 		};
 	}]);
-})();
+})(window, window.angular);

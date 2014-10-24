@@ -1,6 +1,6 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.dataService', []);
-	app.factory('dataService', ['$http', '$q', function($http, $q) {
+	app.factory('dataService', ['$http', '$q', '$rootScope', function($http, $q, $rootScope) {
 		var api = 'http://localhost/wall.barcamp.hk/server/api.php',
 			links = [],
 			jobs = [],
@@ -186,4 +186,4 @@
 			}
 		};
 	}]);
-})();
+})(window, window.angular);

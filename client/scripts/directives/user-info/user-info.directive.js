@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.userInfo', []);
 	app.directive('userInfo', [function() {
 		return {
@@ -15,4 +15,4 @@
 			}
 		};
 	}]);
-})();
+})(window, window.angular);

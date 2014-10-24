@@ -1,6 +1,6 @@
-(function() {
+(function(window, angular, undefined) {
 	// Job directive
-	var app = angular.module('wall.jobModule', ['monospaced.elastic', 'wall.dataService', 'ngSanitize']);
+	var app = angular.module('wall.jobModule', ['monospaced.elastic', 'wall.dataService', 'ngSanitize', 'wall.requireLogin']);
 	app.directive('job', [function() {
 		return {
 			restrict: 'E',
@@ -21,4 +21,4 @@
 			controllerAs: 'jobCtrl'
 		};
 	}]);
-})();
+})(window, window.angular);

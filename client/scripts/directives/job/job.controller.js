@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.jobModule');
 	app.controller('JobController', ['$scope', '$rootScope', '$sce', 'dataService', function($scope, $rootScope, $sce, dataService) {
 		$scope.removeContent = "Are you sure you want to remove this post?";
@@ -74,11 +74,15 @@
 		$scope.trash = function() {
 			$scope.removeable = true;
 			$scope.toolbar = false;
+
+			$scope.$apply();
 		};
 		// Flag a job
 		$scope.flag = function() {
 			$scope.flagable = true;
 			$scope.toolbar = false;
+
+			$scope.$apply();
 		};
 
 		// Create a new post
@@ -176,4 +180,4 @@
 
 		return $scope;
 	}]);
-})();
+})(window, window.angular);

@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.menuSelectModule', ['wall.dataService']);
 	app.directive('menuSelect', ['dataService', function(dataService) {
 		return {
@@ -24,4 +24,4 @@
 			controllerAs: 'menuSelectCtrl'
 		};
 	}]);
-})();
+})(window, window.angular);

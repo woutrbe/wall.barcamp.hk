@@ -1,10 +1,11 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.infinite-scroll', []);
-	app.directive('infiniteScroll', [function() {
+	app.directive('infiniteScroll', ['$rootScope', '$window', '$timeout', function($rootScope, $window, $timeout) {
 		return {
 			restrict: 'A',
-			scope: true,
-			controller: 'InfiniteScrollController'
+			scope: {
+				infiniteScroll: '&'
+			}
 		};
 	}]);
-})();
+})(window, window.angular);

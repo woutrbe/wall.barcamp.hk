@@ -1,15 +1,20 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall', [
 			'wall.routes',
+
+			'wall.controllers',
+
 			'wall.jobModule',
 			'wall.jobsModule',
 			'wall.jobsDetailModule',
 			'wall.menuModule',
-			'wall.addJobModule',
 			'wall.menuSelectModule',
 			'wall.notFound',
 			'wall.userInfo',
+			'wall.faq',
 			'wall.partials',
+
+			'wall.requireLogin',
 
 			'wall.loginService'
 		]);
@@ -35,4 +40,4 @@
 	} catch (e) {
 		var partials = angular.module('wall.partials', []);
 	}
-})();
+})(window, window.angular);

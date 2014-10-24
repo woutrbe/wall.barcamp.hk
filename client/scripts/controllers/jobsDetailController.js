@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	var app = angular.module('wall.jobsDetailModule', []);
 
 	app.controller('JobsDetailController', ['$scope', '$rootScope', '$location', 'job', function($scope, $rootScope, $location, job) {
@@ -12,4 +12,4 @@
 		
 		return $scope;
 	}]);
-})();
+})(window, window.angular);

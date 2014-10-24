@@ -1,4 +1,4 @@
-(function() {
+(function(window, angular, undefined) {
 	// Menu directive
 	var app = angular.module('wall.menuModule', ['wall.dataService']);
 	app.directive('menu', ['dataService', function(dataService) {
@@ -22,4 +22,4 @@
 			controllerAs: 'menuCtrl'
 		};
 	}]);
-})();
+})(window, window.angular);
