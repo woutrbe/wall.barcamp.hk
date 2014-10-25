@@ -17,10 +17,10 @@
 						$scope.job.cat = $scope.selectedMenu;
 
 						// Set the job type as a class
-						$scope.type = 'job--' + $scope.selectedMenu.safeLink;
+						$scope.type = 'job--' + $scope.job.cat.safeLink;
 
 						// Set the maximum characters
-						$scope.maxChars = $scope.selectedMenu.length;
+						$scope.maxChars = $scope.job.cat.length;
 					}	
 				});
 			} else {

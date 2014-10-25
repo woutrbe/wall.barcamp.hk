@@ -1,40 +1,47 @@
 (function(window, angular, undefined) {
 	var app = angular.module('wall.jobsModule', [
 		'wall.dataService',
-		'wall.masonry'
+		'wall.masonry',
+		'wall.infinite-scroll'
 	]);
 
-	app.controller('JobsController', ['$scope', '$rootScope', '$location', '$http', 'dataService', 'tmpJobs', 'menu', 'currentMenu', function($scope, $rootScope, $location, $http, dataService, tmpJobs, menu, currentMenu) {
+	app.controller('JobsController', ['$scope', '$rootScope', '$location', '$http', 'dataService', 'tmpJobs', 'menu', 'currentCat', function($scope, $rootScope, $location, $http, dataService, tmpJobs, menu, currentCat) {
+		// tmpJobs, menu and currentCat are passed through the routes resolve
+
 		$scope.jobs = [];
+		$scope.currentPage = 0;
+		$scope.nextPage = 1;
+		$scope.loading = false;
 
 		$scope.$on('$routeUpdate',function(){
 			console.log($location.search());
 			console.log($location.hash());
 		});
 
-
-		console.log(currentMenu);
-
-		// Match our jobs with the corresponding menu item
-		$scope.matchJobWithMenu = function(jobs, menu) {
-			var tmpJob = {};
-			for(var i = 0; i < jobs.length; i++) {
-				tmpJob = jobs[i];
-				
-				var cat = _.filter(menu, {id: tmpJob.catID.toString()});
-				tmpJob.cat = cat[0];
-
-				$scope.jobs.push(tmpJob);
-			}
-		};
+		if(tmpJobs.length > 0) $scope.jobs = $scope.jobs.concat(tmpJobs);
 
 		// Triggered by the infinitife scroll directive
 		// This handles loading of more jobs
 		$scope.loadMore = function() {
+			if($scope.loading) return;
 
+			dataService.getJobs($scope.nextPage, currentCat.id).then(function(jobs) {
+				// If the response is empty, there's no more jobs to load
+				if(jobs.length == 0) {
+					$scope.loading = true;
+					return;
+				}
+
+				$scope.jobs = $scope.jobs.concat(jobs);
+
+				$scope.currentPage = $scope.nextPage;
+				$scope.nextPage++;
+
+				$scope.loading = false;
+			});
+
+			$scope.loading = true;
 		}
-		
-		$scope.matchJobWithMenu(tmpJobs, menu);
 
 		// Listen to the wall.newJob event to create a new job
 		$rootScope.$on('wall.newJob', function() {

@@ -38,7 +38,7 @@
 					menu: function(dataService) {
 						return dataService.getMenu();
 					},
-					currentMenu: function($q, $route, dataService) {
+					currentCat: function($q, $route, dataService) {
 						var menuQ = $q.defer();
 
 						dataService.getMenu().then(function(links) {

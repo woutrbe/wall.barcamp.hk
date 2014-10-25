@@ -3,7 +3,8 @@
   "homepage": "http://wall.barcamp.hk",
   "dependencies": {
     "angular": "1.2.25",
-    "angular-route": ""
+    "angular-route": "",
+    "jquery": "~2.1.1"
   },
   "devDependencies": {
     "oauth-js": "~0.2.4",

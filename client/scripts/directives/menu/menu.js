@@ -11,10 +11,10 @@
 				});
 
 				$scope.mouseoverHandler = function(e, color) {
-					angular.element(e.srcElement)[0].style.backgroundColor = 'rgb(' + color + ')';
+					angular.element(e.currentTarget)[0].style.backgroundColor = 'rgb(' + color + ')';
 				};
 				$scope.mouseoutHandler = function(e) {
-					angular.element(e.srcElement)[0].style.backgroundColor = 'rgb(255, 255, 255)';
+					angular.element(e.currentTarget)[0].style.backgroundColor = 'rgb(255, 255, 255)';
 				};
 
 				return $scope;

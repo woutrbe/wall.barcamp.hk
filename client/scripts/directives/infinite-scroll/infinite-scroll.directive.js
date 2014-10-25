@@ -5,6 +5,21 @@
 			restrict: 'A',
 			scope: {
 				infiniteScroll: '&'
+			},
+			link: function(scope, elem, attrs) {
+				var windowEl = angular.element($window),
+					container = angular.element(elem),
+					timeout = null,
+
+					onScroll = function() {
+						$timeout.cancel(timeout);
+						
+						timeout = $timeout(function() {
+							if(windowEl.scrollTop() + windowEl.height() >= container.height() - 250) scope.infiniteScroll();
+						}, 500);
+					}
+
+				windowEl.bind('scroll', onScroll);
 			}
 		};
 	}]);

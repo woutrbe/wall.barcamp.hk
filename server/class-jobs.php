@@ -27,6 +27,7 @@ class Jobs {
 		
 		if($result = $db->query($sql)) {
 			while($row = $result->fetch_object()) {
+				$row->safeLink = str_replace(' ', '-', strtolower($row->link));
 				array_push($cats, $row);
 			}
 		}
@@ -59,7 +60,7 @@ class Jobs {
 		$db = Database::getDB();
 		$jobs = array();
 		
-		$sql = "SELECT SQL_CALC_FOUND_ROWS jobs.id, jobs.content, jobs.timestamp, jobs.link, jobs.catID ";
+		$sql = "SELECT SQL_CALC_FOUND_ROWS jobs.id, jobs.content, jobs.timestamp, jobs.link, jobs.catID, cats.id, cats.link, cats.color, cats.length, cats.admin ";
 		$sql .= "FROM jobs ";
 		$sql .= "INNER JOIN cats ON jobs.catID = cats.id ";
 		
@@ -80,7 +81,7 @@ class Jobs {
 			
 			$stm->bind_param('ii', $from, self::$limit);
 			if($stm->execute()) {
-				$stm->bind_result($jobID, $content, $timestamp, $jobLink, $catID);
+				$stm->bind_result($jobID, $content, $timestamp, $jobLink, $catID, $catsID, $catsLink, $catsColor, $catsLength, $catsAdmin);
 				
 				$content = $content;
 				
@@ -88,10 +89,25 @@ class Jobs {
 					$stm->store_result();
 
 					$content = html_entity_decode(self::formatContent(str_replace('&amp;nbsp;', ' ', stripslashes($content))));
+					$content = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($content));
 					
-					$job = array('jobID' => $jobID, 'content' => $content, 'timestamp' => $timestamp * 1000, 'jobLink' => $jobLink, 'catID' => $catID);
+					$job = array(
+							'jobID' => $jobID, 
+							'content' => $content, 
+							'timestamp' => $timestamp * 1000, 
+							'jobLink' => $jobLink, 
+							'catID' => $catID,
+							'cat' => array(
+								'id' => $catsID,
+								'link' => $catsLink,
+								'color' => $catsColor,
+								'length' => $catsLength,
+								'admin' => $catsAdmin,
+								'safeLink' => str_replace(' ', '-', strtolower($catsLink))
+							)
+						);
 					// $job = self::createJobView($job);
-					
+
 					array_push($jobs, $job);
 				}
 			}
@@ -104,7 +120,7 @@ class Jobs {
 			self::$total = $data;
 			break;
 		}
-	
+
 		return $jobs;
 	}
 	
@@ -386,7 +402,7 @@ class Jobs {
 		$content = preg_replace('#\_([^\s\*]([^\*]*[^\s\*])?)\_#is', '<u>$1</u>', $content);
 		
 		$content = preg_replace('!(((f|ht)tp://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1" target="_blank">$1</a>', $content);
-		$content = eregi_replace('([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&//=]+)', '\\1<a href="\\2" target="_blank">\\2</a>', $content);
+		// $content = eregi_replace('([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&//=]+)', '\\1<a href="\\2" target="_blank">\\2</a>', $content);
 	
 		//$content = preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', $content);
 		

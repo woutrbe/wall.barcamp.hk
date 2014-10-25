@@ -2,7 +2,6 @@
 	var app = angular.module('wall.dataService', ['wall.config']);
 	app.factory('dataService', ['$http', '$q', '$rootScope', 'configService', function($http, $q, $rootScope, config) {
 		var links = [],
-			jobs = [],
 			deferredMenuStarted = false,
 			deferredMenu = $q.defer();
 		return {
@@ -25,10 +24,6 @@
 							}
 						}).success(function(data, status, headers, config) {
 							links = data;
-
-							_.each(links, function(link) {
-								link.safeLink = link.link.toLowerCase().replace(/ /g, '-');
-							});
 
 							// Add the "view all" link
 							links.unshift({
@@ -67,11 +62,10 @@
 						ajax: true,
 						action: 'getJobs',
 						page: page,
-						cat: cat
+						cat: cat,
+						time: new Date().getTime()
 					}
 				}).success(function(data) {
-					jobs = data;
-
 					deferred.resolve(data);
 				});
 

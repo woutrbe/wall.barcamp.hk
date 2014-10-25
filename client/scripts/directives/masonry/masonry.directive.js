@@ -3,7 +3,6 @@
 	app.directive('masonry', [function() {
 		return {
 			restrict: 'A',
-			scope: true,
 			link: function(scope, element, attrs, ctrl) {
 				scope.msnryContainer = element;
 				scope.$on('wall.masonry.addToMasonry', function(event, element, prepend) {
