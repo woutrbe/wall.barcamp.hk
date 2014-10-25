@@ -1,12 +1,10 @@
 (function(window, angular, undefined) {
-	var app = angular.module('wall.dataService', []);
-	app.factory('dataService', ['$http', '$q', '$rootScope', function($http, $q, $rootScope) {
-		var api = 'http://localhost/wall.barcamp.hk/server/api.php',
-			links = [],
+	var app = angular.module('wall.dataService', ['wall.config']);
+	app.factory('dataService', ['$http', '$q', '$rootScope', 'configService', function($http, $q, $rootScope, config) {
+		var links = [],
 			jobs = [],
 			deferredMenuStarted = false,
 			deferredMenu = $q.defer();
-
 		return {
 			/**
 			 * Get all the different categories
@@ -20,7 +18,7 @@
 					if(!deferredMenuStarted) {
 						$http({
 							method: 'POST',
-							url: api,
+							url: config.api,
 							data: {
 								ajax: true,
 								action: 'getCats'
@@ -64,7 +62,7 @@
 
 				$http({
 					method: 'POST',
-					url: api,
+					url: config.api,
 					data: {
 						ajax: true,
 						action: 'getJobs',
@@ -92,7 +90,7 @@
 
 				$http({
 					method: 'POST',
-					url: api,
+					url: config.api,
 					data: {
 						ajax: true,
 						action: 'getJob',
@@ -118,7 +116,7 @@
 
 				$http({
 					method: 'POST',
-					url: api,
+					url: config.api,
 					data: {
 						ajax: true,
 						action: 'saveJob',
@@ -147,7 +145,7 @@
 
 				$http({
 					method: 'POST',
-					url: api,
+					url: config.api,
 					data: {
 						ajax: true,
 						action: 'deleteJob',
@@ -172,7 +170,7 @@
 
 				$http({
 					method: 'POST',
-					url: api,
+					url: config.api,
 					data: {
 						ajax: true,
 						action: 'flagJob',

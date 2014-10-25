@@ -40,6 +40,7 @@
 			if(match) {
 				// Remove the [img] from our content
 				job.content = job.content.replace(img, '');
+				job.safeOutput = job.safeOutput.replace(img, '');
 				
 				// Set the background image
 				$scope.jobBackground = {

@@ -3,7 +3,8 @@
 	app.directive('login', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'scripts/directives/login/login.html'
+			templateUrl: 'scripts/directives/login/login.html',
+			controller: 'LoginController'
 		};
 	});
 })(window, window.angular);

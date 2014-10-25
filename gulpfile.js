@@ -8,7 +8,8 @@ var gulp 		= require('gulp'),
 	runSequence	= require('run-sequence'),
 	minifyCSS	= require('gulp-minify-css'),
 	concat		= require('gulp-concat'),
-	jshint		= require('gulp-jshint');
+	jshint		= require('gulp-jshint'),
+	rename		= require("gulp-rename");
 
 var buildDir 	= './build',
 	clientDir 	= './client';
@@ -17,12 +18,16 @@ var buildDir 	= './build',
 gulp.task('watch', function() {
 	gulp.watch(clientDir + '/css/scss/**/*.scss', ['sass']);
 })
+gulp.task('watch-config', function() {
+	gulp.watch('config/dev.config.js', ['copy-dev-config']);
+})
 
 // Build app for production
 gulp.task('build', function() {
 	runSequence(
 		'clean-build',
 		'sass',
+		'copy-prod-config',
 		[
 			'usemin',
 			'compile-templates'
@@ -72,6 +77,16 @@ gulp.task('copy-server', function() {
 	return gulp.src('./server/**/*.*')
 				.pipe(gulp.dest(buildDir + '/server'));
 })
+gulp.task('copy-dev-config', function() {
+	return gulp.src('./config/dev.config.js')
+				.pipe(rename('config.js'))
+				.pipe(gulp.dest(clientDir + '/scripts/services'));
+})
+gulp.task('copy-prod-config', function() {
+	return gulp.src('./config/prod.config.js')
+				.pipe(rename('config.js'))
+				.pipe(gulp.dest(clientDir + '/scripts/services'));
+})
 
 // usemin
 gulp.task('usemin', function() {
@@ -117,5 +132,10 @@ gulp.task('jshint', function() {
 
 // CI
 gulp.task('test', ['jshint']);
-gulp.task('ci', ['test', 'build']);
-gulp.task('dev', ['connect-dev', 'watch']);
+gulp.task('ci', function() {
+	runSequence(
+		'test',
+		'build'
+	)
+});
+gulp.task('dev', ['connect-dev', 'watch', 'watch-config']);

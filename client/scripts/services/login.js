@@ -1,11 +1,9 @@
 (function(window, angular, undefined) {
-	var app = angular.module('wall.loginService', []);
-	app.factory('loginService', ['$http', '$rootScope', '$q', function($http, $rootScope, $q) {
+	var app = angular.module('wall.loginService', ['wall.config']);
+	app.factory('loginService', ['$http', '$rootScope', '$q', 'configService', function($http, $rootScope, $q, config) {
 		var api = 'http://localhost/wall.barcamp.hk/server/api.php',
 			serverState = null,
 			user = null;
-
-			
 
 			function setUser(data) {
 				user = data;
@@ -38,7 +36,7 @@
 				// Check on the server if the user is logged in
 				$http({
 					method: 'POST',
-					url: api,
+					url: config.api,
 					data: {
 						ajax: true,
 						action: 'check'
@@ -62,7 +60,7 @@
 
 				$http({
 					method: 'POST',
-					url: api,
+					url: config.api,
 					data: {
 						ajax: true,
 						action: 'getServerState'
@@ -94,7 +92,7 @@
 					} else {
 						$http({
 							method: 'POST',
-							url: api,
+							url: config.api,
 							data: {
 								ajax: true,
 								action: 'login',
@@ -122,7 +120,7 @@
 
 				$http({
 					method: 'POST',
-					url: api,
+					url: config.api,
 					data: {
 						ajax: true,
 						action: 'logout'

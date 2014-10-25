@@ -37,6 +37,17 @@
 					},
 					menu: function(dataService) {
 						return dataService.getMenu();
+					},
+					currentMenu: function($q, $route, dataService) {
+						var menuQ = $q.defer();
+
+						dataService.getMenu().then(function(links) {
+							var currentCat = _.findWhere(links, {safeLink: $route.current.params.filter});
+
+							menuQ.resolve(currentCat);
+						});
+
+						return menuQ.promise;
 					}
 				}
 			})

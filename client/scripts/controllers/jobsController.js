@@ -4,13 +4,16 @@
 		'wall.masonry'
 	]);
 
-	app.controller('JobsController', ['$scope', '$rootScope', '$location', '$http', 'dataService', 'tmpJobs', 'menu', function($scope, $rootScope, $location, $http, dataService, tmpJobs, menu) {
+	app.controller('JobsController', ['$scope', '$rootScope', '$location', '$http', 'dataService', 'tmpJobs', 'menu', 'currentMenu', function($scope, $rootScope, $location, $http, dataService, tmpJobs, menu, currentMenu) {
 		$scope.jobs = [];
 
 		$scope.$on('$routeUpdate',function(){
 			console.log($location.search());
 			console.log($location.hash());
 		});
+
+
+		console.log(currentMenu);
 
 		// Match our jobs with the corresponding menu item
 		$scope.matchJobWithMenu = function(jobs, menu) {
