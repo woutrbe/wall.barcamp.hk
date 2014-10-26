@@ -30,22 +30,26 @@
 			 *
 			 * @return promise
 			 */
-			check: function() {
+			check: function(onServer) {
 				var deferred = $q.defer();
 
-				// Check on the server if the user is logged in
-				$http({
-					method: 'POST',
-					url: config.api,
-					data: {
-						ajax: true,
-						action: 'check'
-					}
-				}).success(function(data) {
-					if(data !== 'false') setUser(data);
+				if(!onServer) {
+					deferred.resolve(user);
+				} else {
+					// Check on the server if the user is logged in
+					$http({
+						method: 'POST',
+						url: config.api,
+						data: {
+							ajax: true,
+							action: 'check'
+						}
+					}).success(function(data) {
+						if(data !== 'false') setUser(data);
 
-					deferred.resolve(data);
-				})
+						deferred.resolve(data);
+					})
+				}
 
 				return deferred.promise;
 			},

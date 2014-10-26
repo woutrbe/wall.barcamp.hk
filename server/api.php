@@ -7,14 +7,18 @@ session_start();
 require_once 'class-database.php';
 require_once 'class-jobs.php';
 require_once 'class-user.php';
-require_once 'vendor/autoload.php';
 
-use OAuth_io\OAuth;
+function autoloader($class) {
+	if(file_exists('lib/' . $class . '.php')) include 'lib/' . $class . '.php';
+    if(file_exists('lib/OAuth_io/' . $class . '.php')) include 'lib/OAuth_io/' . $class . '.php';
+}
+
+spl_autoload_register('autoloader');
 
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 
-// $request = (object)$_GET;
+$request = (object)$_GET;
 
 if(!isset($_SESSION['wall_login'])) $_SESSION['wall_login'] = null;
 

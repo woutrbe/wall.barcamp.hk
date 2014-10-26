@@ -48,6 +48,9 @@
 						});
 
 						return menuQ.promise;
+					},
+					login: function(loginService) {
+						return loginService.check(true);
 					}
 				}
 			})
@@ -61,11 +64,11 @@
 					},
 					menu: function(dataService) {
 						return dataService.getMenu();
+					},
+					login: function(loginService) {
+						return loginService.check(true);
 					}
 				}
-			})
-			.when('/new', {
-				redirectTo: '/#new'
 			})
 			.when('/404', {
 				templateUrl: 'partials/jobs-detail.html',
@@ -73,6 +76,9 @@
 				resolve: {
 					menu: function(dataService) {
 						return dataService.getMenu();
+					},
+					login: function(loginService) {
+						return loginService.check(true);
 					}
 				}
 			})

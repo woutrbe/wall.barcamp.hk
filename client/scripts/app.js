@@ -12,6 +12,7 @@
 			'wall.notFound',
 			'wall.userInfo',
 			'wall.faq',
+			'wall.login',
 			'wall.partials',
 
 			'wall.requireLogin',

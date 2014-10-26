@@ -60,7 +60,7 @@ class Jobs {
 		$db = Database::getDB();
 		$jobs = array();
 		
-		$sql = "SELECT SQL_CALC_FOUND_ROWS jobs.id, jobs.content, jobs.timestamp, jobs.link, jobs.catID, cats.id, cats.link, cats.color, cats.length, cats.admin ";
+		$sql = "SELECT SQL_CALC_FOUND_ROWS jobs.id, jobs.userID, jobs.content, jobs.timestamp, jobs.link, jobs.catID, cats.id, cats.link, cats.color, cats.length, cats.admin ";
 		$sql .= "FROM jobs ";
 		$sql .= "INNER JOIN cats ON jobs.catID = cats.id ";
 		
@@ -81,7 +81,7 @@ class Jobs {
 			
 			$stm->bind_param('ii', $from, self::$limit);
 			if($stm->execute()) {
-				$stm->bind_result($jobID, $content, $timestamp, $jobLink, $catID, $catsID, $catsLink, $catsColor, $catsLength, $catsAdmin);
+				$stm->bind_result($jobID, $userID, $content, $timestamp, $jobLink, $catID, $catsID, $catsLink, $catsColor, $catsLength, $catsAdmin);
 				
 				$content = $content;
 				
@@ -97,6 +97,7 @@ class Jobs {
 							'timestamp' => $timestamp * 1000, 
 							'jobLink' => $jobLink, 
 							'catID' => $catID,
+							'isMine' => (isset($_SESSION['wall_login']) ? $_SESSION['wall_login']['userID'] == $userID: false),
 							'cat' => array(
 								'id' => $catsID,
 								'link' => $catsLink,

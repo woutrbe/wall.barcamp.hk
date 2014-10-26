@@ -1,6 +1,0 @@
-{
-	"require": {
-		"mashape/unirest-php" : "dev-master",
-		"oauth-io/oauth": "0.3.0"
-	}
-}

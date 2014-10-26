@@ -1,14 +1,13 @@
 <?php
-namespace OAuth_io;
+// namespace OAuth_io;
 
-use \Requests\Request;
+// use \Requests\Request;
 
 class Injector {
     
     public $session;
     public $config = array(
         'oauthd_url' => 'https://oauth.io',
-        'oauthd_base' => '/auth',
         'app_key' => '',
         'app_secret' => ''
     );

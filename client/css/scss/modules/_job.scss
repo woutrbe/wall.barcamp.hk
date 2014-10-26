@@ -64,6 +64,10 @@
 	i {
 		font-size: italic;
 	}
+
+	@media screen and (max-width: 321px) {
+		width: 210px;
+	}
 }
 	.job__inner {
 		border-top: 2px solid rgba(255, 255, 255, 0.7);

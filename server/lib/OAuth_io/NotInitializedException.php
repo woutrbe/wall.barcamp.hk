@@ -1,6 +1,6 @@
 <?php
 
-namespace OAuth_io;
+// namespace OAuth_io;
 
 class NotInitializedException extends \Exception {
 

@@ -7,6 +7,8 @@
 		$scope.editable = ($scope.job.editable !== undefined ? $scope.job.editable : false);
 		$scope.toolbar = ($scope.job.toolbar !== undefined ? $scope.job.toolbar : true);
 
+		console.log($scope.job.isMine);
+
 		$scope.init = function() {
 			if($scope.editable) {
 				$scope.jobInput = 'Enter your post here';
@@ -75,6 +77,12 @@
 		$scope.trash = function() {
 			$scope.removeable = true;
 			$scope.toolbar = false;
+
+			// This job wasn't posted by the logged in user
+			if(!$scope.job.isMine) {
+				$scope.removeContent = "Oops, this isn't yours...";
+				$scope.removeFailed = true;
+			}
 
 			$scope.$apply();
 		};

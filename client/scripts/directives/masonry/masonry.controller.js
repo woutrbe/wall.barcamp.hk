@@ -20,7 +20,7 @@
 						$scope.msnry.appended($scope.itemsToAdd);
 					}
 
-					$scope.layout();
+					// $scope.layout();
 				} else {
 					$scope.msnry = new Masonry($scope.msnryContainer[0], {
 						itemSelector: '.job-container'

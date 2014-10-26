@@ -1,6 +1,6 @@
 (function(window, angular, undefined) {
 	var app = angular.module('wall.requireLogin', []);
-	app.directive('requireLogin', ['loginService', '$parse', function(loginService, $parse) {
+	app.directive('requireLogin', ['$rootScope', 'loginService', function($rootScope, loginService) {
 		return {
 			restrict: 'A',
 			scope: {
@@ -8,9 +8,13 @@
 			},
 			link: function(scope, element, attrs, ctrl) { 
 				element.bind('click', function(e) {
-					console.log('click');
-
-					if(typeof scope.requireLogin === 'function') scope.requireLogin();
+					loginService.check(false).then(function(user) {
+						if(user) {
+							if(typeof scope.requireLogin === 'function') scope.requireLogin();
+						} else {
+							$rootScope.$emit('wall.showLogin');
+						}
+					})
 				})
 			}
 		}
