@@ -18,7 +18,7 @@ spl_autoload_register('autoloader');
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 
-$request = (object)$_GET;
+// $request = (object)$_GET;
 
 if(!isset($_SESSION['wall_login'])) $_SESSION['wall_login'] = null;
 
@@ -29,7 +29,7 @@ if(isset($request->ajax)) {
 	switch($request->action) {
 		// OAuth
 		case 'check':
-			if(isset($_SESSION['wall_login'])) {
+			if(isset($_SESSION['wall_login']) && $_SESSION['wall_login']['userID'] != null) {
 				echo json_encode($_SESSION['wall_login']);
 			} else {
 				echo 'false';

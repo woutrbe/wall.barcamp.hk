@@ -53,12 +53,13 @@
 				link: '',
 				editable: true,
 				removeable: false,
-				prepend: true
+				prepend: true,
+				isMine: true
 			};
 
 			// 2. Add the new job to our array of jobs
 			$scope.jobs.unshift(newJob);
-			$scope.$apply();
+			// $scope.$apply();
 		});
 
 		// Listen to the wall.removeJob event

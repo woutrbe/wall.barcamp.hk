@@ -7,8 +7,6 @@
 		$scope.editable = ($scope.job.editable !== undefined ? $scope.job.editable : false);
 		$scope.toolbar = ($scope.job.toolbar !== undefined ? $scope.job.toolbar : true);
 
-		console.log($scope.job.isMine);
-
 		$scope.init = function() {
 			if($scope.editable) {
 				$scope.jobInput = 'Enter your post here';
@@ -84,14 +82,14 @@
 				$scope.removeFailed = true;
 			}
 
-			$scope.$apply();
+			// $scope.$apply();
 		};
 		// Flag a job
 		$scope.flag = function() {
 			$scope.flagable = true;
 			$scope.toolbar = false;
 
-			$scope.$apply();
+			// $scope.$apply();
 		};
 
 		// Create a new post

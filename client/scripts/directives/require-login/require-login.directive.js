@@ -1,5 +1,5 @@
 (function(window, angular, undefined) {
-	var app = angular.module('wall.requireLogin', []);
+	var app = angular.module('wall.requireLogin', ['wall.loginService']);
 	app.directive('requireLogin', ['$rootScope', 'loginService', function($rootScope, loginService) {
 		return {
 			restrict: 'A',

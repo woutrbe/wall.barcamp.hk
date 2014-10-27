@@ -1,15 +1,15 @@
 (function(window, angular, undefined) {
-	var app = angular.module('wall.userInfo', []);
-	app.directive('userInfo', [function() {
+	var app = angular.module('wall.userInfo', ['wall.loginService']);
+	app.directive('userInfo', ['$rootScope', function($rootScope) {
 		return {
 			restrict: 'E',
 			templateUrl: 'scripts/directives/user-info/user-info.html',
 			controller: 'UserInfoController',
 			link: function(scope, element, attrs, ctrl) {
-				scope.$on('wall.login', function(event, user) {
+				$rootScope.$on('wall.login', function(event, user) {
 					ctrl.onLogin(user);
 				});
-				scope.$on('wall.logout', function(event) {
+				$rootScope.$on('wall.logout', function(event) {
 					ctrl.onLogout();
 				});
 			}

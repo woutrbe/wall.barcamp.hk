@@ -1,1 +1,8 @@
-test
+<div class="overlay" ng-show="loginActive" ng-click="hideLogin()"></div>
+
+<div class="login" ng-show="loginActive">
+	<h1>To add a post, please sign in first.</h1>
+
+	<a title="Sign in with Facebook" ng-click="login('facebook')"><img src="img/loginWithFacebook.png"></a>
+	<a title="Sign in with Twitter" ng-click="login('twitter')"><img src="img/loginWithTwitter.png"></a>
+</div>
