@@ -49,7 +49,7 @@
 			}
 
 			// Generate the link for this job
-			var jobLink = 'http://wall.barcamp.hk/#/job/' + job.jobLink;
+			var jobLink = 'http://wall.barcamp.hk/%23/job/' + job.jobLink;
 
 			// Set twitter / mail links
 			$scope.twitterLink = 'http://twitter.com/home?status=' + job.safeOutput.substr(0, 50) + ' - ' + jobLink;
@@ -109,7 +109,10 @@
 				// Re set the content
 				$scope.setContent($scope.job);
 
-				$scope.$emit('wall.masonry.layout');
+				window.setTimeout(function() {
+					console.log('layout');
+					$scope.$emit('wall.masonry.layout');
+				}, 50)
 			});
 		};
 

@@ -14,7 +14,6 @@
 		}
 
 		$scope.showFaq = function(e) {
-			console.log('test');
 			jQuery('body, html, document').animate({scrollTop: 0}, 'slow');
 
 			$rootScope.$emit('wall.showFaq');
@@ -22,6 +21,10 @@
 
 		$scope.scrollTop = function(e) {
 			jQuery('body, html, document').animate({scrollTop: 0}, 'slow');
+		}
+
+		$scope.toggleMenu = function() {
+			$scope.menuOpen = !$scope.menuOpen;
 		}
 
 		dataService.getJobCount().then(function(data) {

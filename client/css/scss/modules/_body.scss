@@ -2,18 +2,21 @@ body {
 	font-family: "Courier New", Courier, monospace;
 
 	background-image: url('../img/tiledBg_small.png');
+	margin: 0;
+	padding: 0;
 }
 
 .jobs {
-	margin-left: 220px;
+	margin: 27px 0 0 220px;
 
-	@media (max-device-width: 667px) {
+	@media (max-device-width: 736px) {
 		margin-left: 0px;
 	}
 }
 
 a {
 	cursor: pointer;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .post-count {
@@ -32,6 +35,10 @@ a {
 	-webkit-transform: rotate(-10deg);
 	   -moz-transform: rotate(-10deg);
 	        transform: rotate(-10deg);
+
+	@media (max-device-width: 736px) {
+		display: none;
+	}
 }
 	.post-count__count {
 		font-size: 22px;

@@ -7,6 +7,10 @@
 		display: block;
 		clear: both;
 	}
+
+	@media (max-device-width: 736px) {
+		display: none;
+	}
 }
 	.user-image {
 		width: 22px;

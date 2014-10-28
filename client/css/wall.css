@@ -1,15 +1,18 @@
 body {
   font-family: "Courier New", Courier, monospace;
-  background-image: url('../img/tiledBg_small.png'); }
+  background-image: url('../img/tiledBg_small.png');
+  margin: 0;
+  padding: 0; }
 
 .jobs {
-  margin-left: 220px; }
-  @media (max-device-width: 667px) {
+  margin: 27px 0 0 220px; }
+  @media (max-device-width: 736px) {
     .jobs {
       margin-left: 0px; } }
 
 a {
-  cursor: pointer; }
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 .post-count {
   width: 80px;
@@ -23,6 +26,9 @@ a {
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
   transform: rotate(-10deg); }
+  @media (max-device-width: 736px) {
+    .post-count {
+      display: none; } }
 
 .post-count__count {
   font-size: 22px;
@@ -49,7 +55,7 @@ a {
   @media (max-device-width: 768px) {
     .job-container {
       width: 50%; } }
-  @media (max-device-width: 667px) {
+  @media (max-device-width: 736px) {
     .job-container {
       width: 50%; } }
   @media (max-device-width: 568px) {
@@ -194,7 +200,8 @@ a {
   left: 0px;
   height: 32px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2); }
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Always display on mobile device */ }
   .job__toolbar ul, .job__toolbar li {
     list-style: none;
     margin: 0;
@@ -212,6 +219,9 @@ a {
     font-size: 16px; }
     .job__toolbar a:hover {
       color: #fff; }
+  @media (max-device-width: 1024px) {
+    .job__toolbar {
+      display: block; } }
 
 .job__overlay {
   position: absolute;
@@ -272,6 +282,21 @@ a {
   .addJob:hover {
     background-size: 132px 132px;
     background: url('../img/addJob_hover.png') center center no-repeat; }
+  @media (max-device-width: 736px) {
+    .addJob {
+      position: absolute;
+      background-size: 40px;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      -webkit-transition: none;
+      -moz-transition: none;
+      -o-transition: none;
+      transition: none; }
+      .addJob:hover {
+        background: url('../img/addJob.png') center center no-repeat;
+        background-size: 40px 40px; } }
 
 .sidebar {
   position: fixed;
@@ -297,16 +322,74 @@ a {
     margin-left: 20px;
     font-size: 13px;
     line-height: 17px; }
+  @media (max-device-width: 736px) {
+    .sidebar {
+      position: relative;
+      top: 0px;
+      min-height: 40px;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 20px 0 0 0; }
+      .sidebar h1 {
+        margin: 0 0 0 50px;
+        padding: 0px;
+        line-height: 13px; }
+        .sidebar h1 a {
+          font-size: 20px;
+          line-height: 13px; }
+          .sidebar h1 a br {
+            display: none; }
+          .sidebar h1 a span {
+            padding: 0px; }
+      .sidebar p {
+        display: none; } }
+  @media (max-device-width: 320px) {
+    .sidebar h1 a {
+      font-size: 15px; } }
+
+.hamburger {
+  width: 25px;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  display: none; }
+  .hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 25px;
+    background-color: #f25a95; }
+  @media (max-device-width: 736px) {
+    .hamburger {
+      display: block; } }
 
 .main-nav {
   margin: 0px;
   padding: 0px; }
+  @media (max-device-width: 736px) {
+    .main-nav {
+      overflow: hidden;
+      max-height: 0px;
+      opacity: 0;
+      margin: 20px 0 0 0;
+      -webkit-transition: max-height 0.2s 0.2s ease-in-out, opacity 0.2s ease-in-out;
+      -moz-transition: max-height 0.2s 0.2s ease-in-out, opacity 0.2s ease-in-out;
+      transition: max-height 0.2s 0.2s ease-in-out, opacity 0.2s ease-in-out; }
+      .main-nav.expanded {
+        max-height: 1000px;
+        opacity: 1;
+        -webkit-transition: max-height 0.2s ease-in-out, opacity 0.2s 0.2s ease-in-out;
+        -moz-transition: max-height 0.2s ease-in-out, opacity 0.2s 0.2s ease-in-out;
+        transition: max-height 0.2s ease-in-out, opacity 0.2s 0.2s ease-in-out; } }
 
 .navigation {
   margin: 0px;
   padding: 0px; }
   .navigation li {
     list-style: none; }
+    @media (max-device-width: 736px) {
+      .navigation li {
+        width: 100%; } }
   .navigation a {
     display: inline-block;
     border: 1px solid #cdcdcd;
@@ -319,6 +402,11 @@ a {
     text-decoration: none; }
     .navigation a:hover {
       color: white; }
+    @media (max-device-width: 736px) {
+      .navigation a {
+        border: none;
+        display: block;
+        width: auto; } }
 
 .user-info {
   margin: 0 0 0 20px;
@@ -327,6 +415,9 @@ a {
     content: '';
     display: block;
     clear: both; }
+  @media (max-device-width: 736px) {
+    .user-info {
+      display: none; } }
 
 .user-image {
   width: 22px;
@@ -360,6 +451,9 @@ a {
     background: url(../img/toTop.png) center left no-repeat;
     padding-left: 10px;
     margin-left: 10px; }
+  @media (max-device-width: 736px) {
+    .footer {
+      display: none; } }
 
 .login {
   width: 620px;
@@ -375,6 +469,13 @@ a {
   background-image: url('../img/tiledBg_small.png');
   box-sizing: border-box;
   text-align: center; }
+  @media (max-device-width: 736px) {
+    .login {
+      width: 100%;
+      height: 300px;
+      padding: 20px; }
+      .login img {
+        max-width: 100%; } }
   .login h1 {
     margin: 0 0 50px 0;
     padding: 0px;
@@ -382,6 +483,9 @@ a {
     font-size: 35px;
     font-weight: 700;
     color: #464646; }
+    @media (max-device-width: 736px) {
+      .login h1 {
+        font-size: 25px; } }
 
 .faq {
   position: absolute;

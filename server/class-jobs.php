@@ -161,9 +161,19 @@ class Jobs {
 				$stm->bind_result($jobID, $content, $timestamp, $jobLink, $catID, $color, $link);
 				
 				while($stm->fetch()) {
-					return array('jobID' => $jobID, 'content' => $content, 'timestamp' => $timestamp, 'jobLink' => $jobLink, 'catID' => $catID, 
+					$content = html_entity_decode(self::formatContent(str_replace('&amp;nbsp;', ' ', stripslashes($content))));
+					$content = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($content));
+
+					return array(
+						'jobID' => $jobID, 
+						'content' => $content, 
+						'timestamp' => $timestamp, 
+						'jobLink' => $jobLink, 
+						'catID' => $catID, 
+						'isMine' => (isset($_SESSION['wall_login']) ? $_SESSION['wall_login']['userID'] == $userID: false),
 						'cat' => array(
-							'color' => $color, "link" => $link
+							'color' => $color, 
+							"link" => $link
 						));
 				}
 			}

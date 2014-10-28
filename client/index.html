@@ -23,6 +23,11 @@
 		</div>
 
 		<div class="sidebar">
+			<a class="hamburger" ng-click="toggleMenu()" ng-class="{expanded: menuOpen}">
+				<span></span>
+				<span></span>
+				<span></span>
+			</a>
 			<user-info class="user-info"></user-info>
 
 			<h1>
@@ -36,7 +41,7 @@
 			</h1>
 			<p>Built for startups, digital agencies and tech co's in HK looking for talent or investors. No frills, no bullshit, no fees.</p>
 
-			<menu class="main-nav"></menu>
+			<menu class="main-nav" ng-class="{expanded: menuOpen}"></menu>
 		</div>
 
 		<faq></faq>

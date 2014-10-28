@@ -21,4 +21,8 @@
 			margin-left: 10px;
 		}
 	}
+
+	@media (max-device-width: 736px) {
+		display: none;
+	}
 }

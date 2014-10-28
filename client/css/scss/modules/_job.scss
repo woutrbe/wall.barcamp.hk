@@ -16,7 +16,7 @@
 	@media (max-device-width: 768px) {
 		width: 50%;
 	}
-	@media (max-device-width: 667px) {
+	@media (max-device-width: 736px) {
 		width: 50%;
 	}
 	@media (max-device-width: 568px) {
@@ -248,6 +248,11 @@
 			&:hover {
 				color: #fff;
 			}
+		}
+
+		/* Always display on mobile device */
+		@media (max-device-width: 1024px) {
+			display: block;
 		}
 	}
 

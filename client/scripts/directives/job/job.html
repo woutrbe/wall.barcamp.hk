@@ -11,7 +11,7 @@
 	<div class="job__inner" ng-style="jobBackground">
 		<div ng-show="editable">
 			<menu-select selected-menu="selectedMenu"></menu-select>
-			<textarea class="job__input" cols="3" rows="3" maxlength="{{ selectedMenu.length }}" ng-model="jobInput" ng-trim="false" msd-elastic="\n">Enter your post here</textarea>
+			<textarea class="job__input" cols="3" rows="3" maxlength="{{ selectedMenu.length }}" ng-model="jobInput" ng-trim="false" msd-elastic="\n" placeholder="Enter your post here"></textarea>
 
 			<span class="job__chars">{{ maxChars - jobInput.length }} characters remaining</span>
 
