@@ -25,6 +25,16 @@
 					$scope.msnry = new Masonry($scope.msnryContainer[0], {
 						itemSelector: '.job-container'
 					});
+
+					// Listen to the layoutComplete event
+					$scope.msnry.on('layoutComplete', function(msnryInstance, laidOutItems) {
+						// Give each new element a "ready" class
+						_.each(laidOutItems, function(item) {
+							angular.element(item.element).addClass('ready');
+						});
+					});
+
+					$scope.layout();
 				}
 
 				// Reset the array with items to add
