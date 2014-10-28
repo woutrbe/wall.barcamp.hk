@@ -12,10 +12,13 @@
 		}
 
 		$scope.showFaq = function(e) {
+			$scope.scrollTop(null);
+
 			$rootScope.$emit('wall.showFaq');
 		}
 
 		$scope.scrollTop = function(e) {
+			jQuery('body, html, document').animate({scrollTop: 0}, 'slow');
 		}
 	}])
 })(window, window.angular);

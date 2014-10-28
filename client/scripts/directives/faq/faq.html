@@ -1,1 +1,34 @@
-bleh
+<div class="overlay" ng-show="faqActive" ng-click="hideFaq()"></div>
+
+<div class="faq" ng-show="faqActive && !orgActive">
+	<h1>FAQ</h1>
+
+	<div class="left">
+		<h2>What is this?</h2>
+		<p>Back in 2010, we were at <a href="http://www.barcamp.hk" title="BarCamp Hong Kong">BarCamp Hong Kong</a>, standing and looking at the BarCamp Wall, neatly filled with Post-its which made up the speaking schedule of the day. Right next to the schedule, Simon from <a href="http://www.frenzoo.com/" title="Frenzoo">Frenzoo</a> decided to start another board -- a job board. It was divided into four sections -- the same that you see on this site -- and sure enough, people started putting stuff up on it. In the right sections, too. The people that weren't posting were actually reading it. It was simple and useful. </p>
+
+		<p>We wondered what it would be like if looking for jobs, talent and resources online was like this. So we built this site to see what would happen.</p>
+
+		<div class="faq__org">
+			<img src="http://wall.barcamp.hk/images/orgJobwall.png" ng-click="showOrg()">
+			<p>The original Barcamp <br>
+				Job Wall at PolyU, <br>
+				BarCamp Hong Kong <br>
+				2010.</p>
+		</div>
+
+		<a href="http://www.beansbox.com" title="BeansBox" class="faq__site"></a>
+	</div>
+
+	<div class="right">
+		<h2>Why do I need to login thru Facebook and Twitter to post? You're not gonna collect my email and send me spam are you?</h2>
+		<p>Of course not. We only ask you to login so that we can verify you're a real person and not a spambot. Logging in also allows you to delete your own posts any time you want.</p>
+
+		<h2>Why was my post deleted?</h2>
+		<p>Because you wrote something that caused a bunch people to Flag your post, which resulted in it being removed. </p>
+	</div>
+</div>
+
+<div class="faq__org-large" ng-show="orgActive">
+	<img src="img/origJobwallLarge.png">
+</div>

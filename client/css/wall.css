@@ -301,6 +301,15 @@ a {
   bottom: 25px;
   left: 20px;
   font-size: 13px; }
+  .footer a:first-child {
+    border-right: 1px solid black;
+    padding-right: 10px; }
+  .footer a:hover {
+    text-decoration: underline; }
+  .footer a.toTop {
+    background: url(../img/toTop.png) center left no-repeat;
+    padding-left: 10px;
+    margin-left: 10px; }
 
 .login {
   width: 620px;
@@ -323,6 +332,88 @@ a {
     font-size: 35px;
     font-weight: 700;
     color: #464646; }
+
+.faq {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 510;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 50px 50px 30px 50px;
+  width: 830px;
+  height: 620px;
+  background-color: #f25a95;
+  border: 1px solid #9a9a9a; }
+  .faq h1 {
+    margin: 0 0 30px 0;
+    padding: 0px;
+    font-size: 30px;
+    font-family: chunk-1, chunk-2;
+    color: white;
+    text-transform: uppercase; }
+  .faq h2 {
+    font-size: 13px;
+    color: white;
+    padding-top: 20px;
+    border-top: 1px solid black; }
+  .faq p {
+    font-size: 13px;
+    margin: 0 0 30px 0; }
+    .faq p a {
+      color: black;
+      text-decoration: underline; }
+      .faq p a:hover {
+        color: white; }
+  .faq .left {
+    width: 374px;
+    float: left; }
+  .faq .right {
+    width: 283px;
+    float: right; }
+
+.faq__org {
+  height: 80px;
+  margin-bottom: 20px; }
+  .faq__org img {
+    cursor: pointer;
+    float: left;
+    margin-right: 20px;
+    border: 5px solid rgba(38, 35, 35, 0); }
+    .faq__org img:hover {
+      border: 5px solid #262323; }
+  .faq__org p {
+    float: left;
+    color: #994666;
+    margin: 10px 0 0 0; }
+
+.faq__site {
+  clear: both;
+  display: block;
+  width: 132px;
+  height: 24px;
+  background: url(../img/siteBy.png) 0px 0px; }
+  .faq__site:hover {
+    background-position: 0px 24px; }
+
+.faq__org-large {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 510;
+  box-sizing: border-box;
+  margin: auto;
+  background-color: #262323;
+  padding: 20px;
+  width: 830px;
+  height: 611px; }
+  .faq__org-large img {
+    width: 790px;
+    height: 571px; }
 
 .overlay {
   position: fixed;

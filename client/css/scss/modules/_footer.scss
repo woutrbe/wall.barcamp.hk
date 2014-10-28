@@ -4,4 +4,21 @@
 	left: 20px;
 
 	font-size: 13px;
+
+	a {
+		&:first-child {
+			border-right: 1px solid rgb(0, 0, 0);
+			padding-right: 10px;
+		}
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		&.toTop {
+			background: url(../img/toTop.png) center left no-repeat;
+			padding-left: 10px;
+			margin-left: 10px;
+		}
+	}
 }

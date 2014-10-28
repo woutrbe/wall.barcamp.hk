@@ -2,7 +2,11 @@
 	var app = angular.module('wall.userInfo');
 	app.controller('UserInfoController', ['$scope', '$rootScope', 'loginService', function($scope, $rootScope, loginService) {
 		// On startup check if we are logged in already
-		loginService.check(false);
+		loginService.check(true).then(function(data) {
+			// console.log('check promise');
+		})
+
+		loginService.check(true);
 
 		$scope.isLoggedIn = false;
 
