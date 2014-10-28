@@ -175,6 +175,28 @@
 				});
 
 				return deferred.promise;
+			},
+
+			/**
+			 * Get the total amount of jobs
+			 *
+			 * @return promise
+			 */
+			getJobCount: function() {
+				var deferred = $q.defer();
+
+				$http({
+					method: 'POST',
+					url: config.api,
+					data: {
+						ajax: true,
+						action: 'getJobCount'
+					}
+				}).success(function(data) {
+					deferred.resolve(data);
+				});
+
+				return deferred.promise;
 			}
 		};
 	}]);

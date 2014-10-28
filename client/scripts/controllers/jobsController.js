@@ -5,18 +5,13 @@
 		'wall.infinite-scroll'
 	]);
 
-	app.controller('JobsController', ['$scope', '$rootScope', '$location', '$http', 'dataService', 'tmpJobs', 'menu', 'currentCat', function($scope, $rootScope, $location, $http, dataService, tmpJobs, menu, currentCat) {
-		// tmpJobs, menu and currentCat are passed through the routes resolve
+	app.controller('JobsController', ['$scope', '$rootScope', '$location', '$http', 'dataService', 'tmpJobs', 'currentCat', function($scope, $rootScope, $location, $http, dataService, tmpJobs, currentCat) {
+		// tmpJobs and currentCat are passed through the routes resolve
 
 		$scope.jobs = [];
 		$scope.currentPage = 0;
 		$scope.nextPage = 1;
 		$scope.loading = false;
-
-		$scope.$on('$routeUpdate',function(){
-			console.log($location.search());
-			console.log($location.hash());
-		});
 
 		if(tmpJobs.length > 0) $scope.jobs = $scope.jobs.concat(tmpJobs);
 

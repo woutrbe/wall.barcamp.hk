@@ -15,6 +15,11 @@
 	<body ng-controller="WallController">
 		<a class="addJob" require-login="addNewJob()"></a>
 
+		<div class="post-count">
+			<span class="post-count__count">{{ totalJobs }}</span>
+			<span class="post-count__text">POSTS<br>NOW</span>
+		</div>
+
 		<div class="sidebar">
 			<user-info class="user-info"></user-info>
 

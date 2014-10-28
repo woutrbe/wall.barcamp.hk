@@ -35,9 +35,6 @@
 
 						return jobsQ.promise;
 					},
-					menu: function(dataService) {
-						return dataService.getMenu();
-					},
 					currentCat: function($q, $route, dataService) {
 						var menuQ = $q.defer();
 
@@ -62,9 +59,6 @@
 						// Check if job actually exists
 						return dataService.getJob($route.current.params.job);
 					},
-					menu: function(dataService) {
-						return dataService.getMenu();
-					},
 					login: function(loginService) {
 						return loginService.check(true);
 					}
@@ -74,9 +68,6 @@
 				templateUrl: 'partials/jobs-detail.html',
 				controller: 'NotFoundController',
 				resolve: {
-					menu: function(dataService) {
-						return dataService.getMenu();
-					},
 					login: function(loginService) {
 						return loginService.check(true);
 					}

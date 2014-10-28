@@ -126,6 +126,9 @@ if(isset($request->ajax)) {
 				echo 'false';
 			}
 			break;
+		case 'getJobCount':
+			echo Jobs::getjobcount();
+			break;
 	}
 }
 ?>

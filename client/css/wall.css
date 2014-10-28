@@ -8,6 +8,31 @@ body {
 a {
   cursor: pointer; }
 
+.post-count {
+  width: 80px;
+  height: 83px;
+  position: fixed;
+  top: -10px;
+  left: 180px;
+  z-index: 400;
+  background: url(../img/postCountBg.png);
+  text-align: center;
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  transform: rotate(-10deg); }
+
+.post-count__count {
+  font-size: 22px;
+  font-family: chunk-1, chunk-2;
+  color: #3e3e3e;
+  display: block;
+  margin: 20px 0 0 0; }
+
+.post-count__text {
+  font-size: 10px;
+  color: #ababab;
+  display: block; }
+
 .job-container {
   float: left; }
 
