@@ -4,6 +4,9 @@ body {
 
 .jobs {
   margin-left: 220px; }
+  @media (max-device-width: 667px) {
+    .jobs {
+      margin-left: 0px; } }
 
 a {
   cursor: pointer; }
@@ -34,7 +37,23 @@ a {
   display: block; }
 
 .job-container {
-  float: left; }
+  float: left;
+  box-sizing: border-box;
+  padding: 0 0 27px 20px; }
+  @media (max-device-width: 1024px) {
+    .job-container {
+      width: 33%; } }
+  @media (max-device-width: 768px) {
+    .job-container {
+      width: 50%; } }
+  @media (max-device-width: 667px) {
+    .job-container {
+      width: 50%; } }
+  @media (max-device-width: 568px) {
+    .job-container {
+      float: none;
+      width: 100%;
+      padding: 0 0 10px 0; } }
 
 .job-detail {
   max-width: 450px;
@@ -56,7 +75,6 @@ a {
   box-sizing: border-box;
   width: 250px;
   height: auto;
-  margin: 0 0 27px 20px;
   color: #444444;
   font-size: 13px;
   border: 1px solid #9a9a9a;
@@ -73,9 +91,13 @@ a {
     text-decoration: underline; }
   .job i {
     font-size: italic; }
-  @media screen and (max-width: 321px) {
+  @media (max-device-width: 1024px) {
     .job {
-      width: 210px; } }
+      width: 100%;
+      max-width: 250px; } }
+  @media (max-device-width: 568px) {
+    .job {
+      margin: 0 auto; } }
 
 .job__inner {
   border-top: 2px solid rgba(255, 255, 255, 0.7);

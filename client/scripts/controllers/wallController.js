@@ -14,7 +14,8 @@
 		}
 
 		$scope.showFaq = function(e) {
-			$scope.scrollTop(null);
+			console.log('test');
+			jQuery('body, html, document').animate({scrollTop: 0}, 'slow');
 
 			$rootScope.$emit('wall.showFaq');
 		}

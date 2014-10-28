@@ -7,7 +7,7 @@
 
 	app.controller('JobsController', ['$scope', '$rootScope', '$location', '$http', 'dataService', 'tmpJobs', 'currentCat', function($scope, $rootScope, $location, $http, dataService, tmpJobs, currentCat) {
 		// tmpJobs and currentCat are passed through the routes resolve
-
+		
 		$scope.jobs = [];
 		$scope.currentPage = 0;
 		$scope.nextPage = 1;

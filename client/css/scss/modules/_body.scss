@@ -6,6 +6,10 @@ body {
 
 .jobs {
 	margin-left: 220px;
+
+	@media (max-device-width: 667px) {
+		margin-left: 0px;
+	}
 }
 
 a {

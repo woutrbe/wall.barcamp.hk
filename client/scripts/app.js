@@ -21,18 +21,6 @@
 		]);
 	app.run(function(loginService) {
 		loginService.init();
-
-		// loginService.getServerState().then(function(state) {
-		// 	console.log(state);
-
-		// 	loginService.login('twitter').then(function(data) {
-		// 		console.log(data);
-
-		// 		loginService.check().then(function(data) {
-		// 			console.log(data);
-		// 		})
-		// 	})
-		// })
 	});
 
 	// Setup for partials that are compiled during the build process
