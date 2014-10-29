@@ -81,7 +81,10 @@ gulp.task('copy-fonts', function() {
 
 // Copy all server files to the build folder
 gulp.task('copy-server', function() {
-	return gulp.src('./server/**/*.*')
+	return gulp.src([
+					'./server/**/*.*',
+					'!./server/class-database.php'
+				])
 				.pipe(gulp.dest(buildDir + '/server'));
 })
 gulp.task('copy-dev-config', function() {
