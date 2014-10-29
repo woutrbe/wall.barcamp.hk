@@ -30,25 +30,25 @@ class HttpWrapper {
         }
         $url = str_replace('%2C', ',', $url);
 
-        \Unirest::verifyPeer($injector->ssl_verification);
+        Unirest::verifyPeer($injector->ssl_verification);
         if ($options['method'] == 'GET') {
-            $response = \Unirest::get($url, $headers);
+            $response = Unirest::get($url, $headers);
         }
         
         if ($options['method'] == 'POST') {
-            $response = \Unirest::post($url, $headers, $body);
+            $response = Unirest::post($url, $headers, $body);
         }
         
         if ($options['method'] == 'PUT') {
-            $response = \Unirest::put($url, $headers, $body);
+            $response = Unirest::put($url, $headers, $body);
         }
         
         if ($options['method'] == 'DELETE') {
-            $response = \Unirest::delete($url, $headers);
+            $response = Unirest::delete($url, $headers);
         }
         
         if ($options['method'] == 'PATCH') {
-            $response = \Unirest::patch($url, $headers, $body);
+            $response = Unirest::patch($url, $headers, $body);
         }
 
         return $response;

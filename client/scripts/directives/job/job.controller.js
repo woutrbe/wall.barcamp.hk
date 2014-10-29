@@ -9,7 +9,7 @@
 
 		$scope.init = function() {
 			if($scope.editable) {
-				$scope.jobInput = 'Enter your post here';
+				// $scope.jobInput = 'Enter your post here';
 				
 				// Watch for changes in $scope.selectedMenu
 				$scope.$watch('selectedMenu', function(newValue, oldValue) {
@@ -109,8 +109,9 @@
 				// Re set the content
 				$scope.setContent($scope.job);
 
+				$rootScope.$emit('wall.addedJob');
+				
 				window.setTimeout(function() {
-					console.log('layout');
 					$scope.$emit('wall.masonry.layout');
 				}, 50)
 			});

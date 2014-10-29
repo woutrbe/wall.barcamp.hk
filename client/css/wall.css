@@ -89,7 +89,7 @@ a {
   border: 1px solid #9a9a9a;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
   .job.editting {
-    z-index: 200; }
+    z-index: 510 !important; }
   .job:hover .job__toolbar {
     display: block; }
   .job a {
@@ -163,6 +163,14 @@ a {
     -webkit-transition: height 100ms ease-in-out;
     -moz-transition: height 100ms ease-in-out;
     transition: height 100ms ease-in-out; }
+  .job__input::-webkit-input-placeholder {
+    color: black; }
+  .job__input:-moz-placeholder {
+    color: black; }
+  .job__input::-moz-placeholder {
+    color: black; }
+  .job__input:-ms-input-placeholder {
+    color: black; }
 
 .jobs__format-tip {
   width: 10px;

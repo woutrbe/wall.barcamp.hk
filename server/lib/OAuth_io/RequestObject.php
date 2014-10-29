@@ -60,7 +60,7 @@ class RequestObject {
     
     private function makeMeRequest($filters) {
         if (!isset($this->credentials)) {
-            throw new \Exception('Error');
+            throw new Exception('Error');
         } else {
             $prov_data = $this->credentials;
             $requester = $this->injector->getRequest();

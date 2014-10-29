@@ -7,6 +7,8 @@
 			// Emit a "wall.newJob" event
 			// This will be caught in jobsController
 			$rootScope.$emit('wall.newJob');
+
+			jQuery('body, html, document').animate({scrollTop: 0}, 'slow');
 		};
 
 		$scope.showLogin = function(e) {
@@ -14,8 +16,6 @@
 		}
 
 		$scope.showFaq = function(e) {
-			jQuery('body, html, document').animate({scrollTop: 0}, 'slow');
-
 			$rootScope.$emit('wall.showFaq');
 		}
 
@@ -29,6 +29,16 @@
 
 		dataService.getJobCount().then(function(data) {
 			$scope.totalJobs = parseInt(data);
+		})
+
+		$rootScope.$on('wall.newJob', function() {
+			$scope.overlayVisible = true;
+		})
+		$rootScope.$on('wall.removeJob', function(event, job) {
+			$scope.overlayVisible = false;
+		})
+		$rootScope.$on('wall.addedJob', function() {
+			$scope.overlayVisible = false;
 		})
 
 		// Listen to the wall.newJob event to create a new job

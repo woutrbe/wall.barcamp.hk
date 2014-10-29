@@ -7,6 +7,8 @@
 			controller: 'LoginController',
 			link: function(scope, element, attrs, ctrl) {
 				$rootScope.$on('wall.showLogin', function(event) {
+					jQuery('body, html, document').animate({scrollTop: 0}, 'slow');
+					
 					ctrl.showLogin();
 				});	
 				$rootScope.$on('wall.login', function(event, user) {

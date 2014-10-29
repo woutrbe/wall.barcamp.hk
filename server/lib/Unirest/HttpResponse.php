@@ -1,7 +1,5 @@
 <?php
 
-namespace Unirest;
-
 class HttpResponse
 {
     
@@ -22,10 +20,11 @@ class HttpResponse
         $this->raw_body = $raw_body;
         $this->body     = $raw_body;
         $json           = json_decode($raw_body);
+        $this->body = $json;
         
-        if (json_last_error() == JSON_ERROR_NONE) {
-            $this->body = $json;
-        }
+        // if (json_last_error() == JSON_ERROR_NONE) {
+        //     $this->body = $json;
+        // }
     }
     
     /**

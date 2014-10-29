@@ -93,9 +93,8 @@ class OAuth {
     }
     
     public function refreshCredentials($credentials, $force = false) {
-        $date = new DateTime();
         $credentials['refreshed'] = false;
-        if (isset($credentials['refresh_token']) && ((isset($credentials['expires']) && $date->getTimestamp() > $credentials['expires']) || $force)) {
+        if (isset($credentials['refresh_token']) && ((isset($credentials['expires']) && time() > $credentials['expires']) || $force)) {
             $request = $this->injector->getRequest();
             $response = $request->make_request(array(
                 'method' => 'POST',
@@ -142,8 +141,7 @@ class OAuth {
             ));
             $credentials = json_decode(json_encode($response->body) , true);
             if (isset($credentials['expires_in'])) {
-                $date = new DateTime();
-                $credentials['expires'] = $date->getTimestamp() + $credentials['expires_in'];
+                $credentials['expires'] = time() + $credentials['expires_in'];
             }
             
             if (isset($credentials['provider'])) {

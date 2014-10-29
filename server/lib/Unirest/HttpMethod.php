@@ -1,7 +1,5 @@
 <?php
 
-namespace Unirest;
-
 interface HttpMethod
 {
     
