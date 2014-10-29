@@ -78,15 +78,6 @@
 	a {
 		cursor: pointer;
 	}
-	strong {
-		font-weight: 700;
-	}
-	u {
-		text-decoration: underline;
-	}
-	i {
-		font-size: italic;
-	}
 
 	@media (max-device-width: 1024px) {
 		width: 100%;
@@ -111,6 +102,16 @@
 			&:hover {
 				color: rgb(255, 255, 255);
 			}
+		}
+
+		strong {
+			font-weight: 700;
+		}
+		u {
+			text-decoration: underline;
+		}
+		i {
+			font-style: italic;
 		}
 	}
 

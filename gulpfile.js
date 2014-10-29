@@ -33,7 +33,8 @@ gulp.task('build', function() {
 			'compile-templates'
 		],
 		'copy-server',
-		'copy-images'
+		'copy-images',
+		'copy-fonts'
 	)
 })
 
@@ -70,6 +71,12 @@ gulp.task('clean-build', function() {
 gulp.task('copy-images', function() {
 	return gulp.src(clientDir + '/img/*.*')
 				.pipe(gulp.dest(buildDir + '/img'));
+})
+
+// Copy font files to the build folder
+gulp.task('copy-fonts', function() {
+	return gulp.src(clientDir + '/fonts/*.*')
+				.pipe(gulp.dest(buildDir + '/fonts'));
 })
 
 // Copy all server files to the build folder

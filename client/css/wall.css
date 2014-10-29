@@ -94,12 +94,6 @@ a {
     display: block; }
   .job a {
     cursor: pointer; }
-  .job strong {
-    font-weight: 700; }
-  .job u {
-    text-decoration: underline; }
-  .job i {
-    font-size: italic; }
   @media (max-device-width: 1024px) {
     .job {
       width: 100%;
@@ -120,6 +114,12 @@ a {
     color: #444444; }
     .job__body a:hover {
       color: white; }
+  .job__body strong {
+    font-weight: 700; }
+  .job__body u {
+    text-decoration: underline; }
+  .job__body i {
+    font-style: italic; }
 
 .job__create-btn {
   font-size: 11px;
