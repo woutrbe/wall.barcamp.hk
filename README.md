@@ -17,3 +17,6 @@ To build a release:
 
 ## Authentication
 We're using http://oauth.io to authenticate with Twitter and Facebook
+
+## Deployment
+Just push your changes to the master branch, Travis-ci will prepare a release build and upload it to the SFTP server. (Still in progress)
