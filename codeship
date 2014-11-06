@@ -1,0 +1,2 @@
+mkdir /public_html/wall.barcamp.hk/www/test/
+put -rp ~/clone/build/* /public_html/wall.barcamp.hk/www/test/
