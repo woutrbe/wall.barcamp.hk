@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/woutrbe/wall.barcamp.hk.svg?branch=master)](https://travis-ci.org/woutrbe/wall.barcamp.hk)
+[![Codeship Status for woutrbe/wall.barcamp.hk](https://www.codeship.io/projects/395b9460-47c9-0132-d1d8-7ee77ec447d5/status)](https://www.codeship.io/projects/45697)
 
 # wall.barcamp.hk
 http://wall.barcamp.hk
